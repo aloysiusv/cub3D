@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initing_parsing.c                                  :+:      :+:    :+:   */
+/*   init_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:08:07 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:08:09 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	initing_parsing(char **argv, t_s *zz)
+void	init_parsing(char **argv, t_game *zz)
 {
 	zz->map_name = argv[1];
 	zz->rx = 0;

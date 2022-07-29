@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_two.c                                      :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 23:08:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
+/*   Created: 2021/05/17 15:51:39 by lrandria          #+#    #+#             */
+/*   Updated: 2021/06/10 20:03:30 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	check_map_infos(t_game *zz)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (check_walls(zz) == 1)
-		exiting(zz, "Map non entouree de 1\n");
-	if (zz->depart == 'Z')
-		exiting(zz, "Pas de joueur\n");
+	size_t	i;
+	size_t	j;
+
+	if (*little == '\0')
+		return ((char *)big);
+	i = 0;
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (big[i + j] == little[j] && i + j < len)
+		{
+			if (little[j + 1] == '\0')
+				return ((char *)big + i);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

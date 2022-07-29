@@ -1,44 +1,62 @@
-SRCS 			=	./srcs/keying.c \
-					./srcs/raycasting_tools.c \
-					./srcs/raycasting.c \
-					./srcs/coloring.c \
-					./srcs/initing_parsing.c \
-					./srcs/cub3d.c \
-					./srcs/parsing_one.c \
-					./srcs/parsing_two.c \
-					./srcs/get_next_line.c \
-					./srcs/get_next_line_utils.c\
-					./srcs/tools.c \
-					./srcs/exiting.c \
-					./srcs/initing_raycasting.c \
-					./srcs/updating_raycasting.c \
-					./srcs/texturing.c \
-					./srcs/moving.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/27 23:24:55 by lrandria          #+#    #+#              #
+#    Updated: 2022/07/29 18:08:20 by lrandria         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-OBJS			= 	$(SRCS:.c=.o)
+NAME 		=	cub3D
+MLX			=	minilibx-linux/libmlx.a
+LFT			= 	libft/libft.a
+CC			=	clang
+CFLAGS		=	-Wall -Wextra -Werror -g3
+INC			=	-I ./
+LIBS		=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+OBJS		= 	$(SRCS:.c=.o)
+HDR			=	./inc/cub3D.h
+SRCS 		=	./srcs/keying.c \
+				./srcs/raycasting_tools.c \
+				./srcs/raycasting.c \
+				./srcs/coloring.c \
+				./srcs/init_parsing.c \
+				./srcs/cub3d.c \
+				./srcs/parsing_one.c \
+				./srcs/parsing_two.c \
+				./srcs/get_next_line.c \
+				./srcs/get_next_line_utils.c\
+				./srcs/tools.c \
+				./srcs/exiting.c \
+				./srcs/init_raycasting.c \
+				./srcs/updating_raycasting.c \
+				./srcs/texturing.c \
+				./srcs/moving.c
 
-LIBS			= 	-L ./minilibx-linux -lmlx -lXext -lX11 -lm
-
-CC				= 	gcc
-
-RM				= 	rm -f
-
-CFLAGS			= 	-Wall -Wextra -Werror -g3 -I./srcs -I./minilibx-linux
-
-NAME 			=	cub3D
-
-all:			$(NAME)
+all:			$(MLX) $(LFT) $(NAME)
 
 $(NAME):		$(OBJS)
-				gcc $(CFLAGS) -g3 -o $(NAME) $(OBJS) $(LIBS)
-				$(RM) $(OBJS)
+				$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
+
+$(MLX):
+			make -C ./minilibx-linux
+$(LFT):
+			make -C ./libft
+
+%.o:		%.c $(HDR)
+			$(CC) $(CFLAGS) $(INC) -c -o $@ $< 
 
 clean:
-				$(RM) $(OBJS)
+			rm -rf $(OBJS)
+			make -C ./libft clean
 
-fclean:			clean
-				$(RM) $(NAME) $(OBJS)
+fclean:		clean
+			rm -rf $(NAME)
+			make -C ./libft fclean
 
-re:				fclean $(NAME)
+re:			fclean all
 
-.PHONY:			all clean fclean re bonus
+.PHONY:		all clean fclean re bonus

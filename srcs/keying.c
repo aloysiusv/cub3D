@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:08:30 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:08:32 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		keying(int keycode, t_s *zz)
+int		keying(int keycode, t_game *zz)
 {
 	if (keycode == FORWARD_W_Z)
 		zz->data.forward = 1;
@@ -31,7 +31,7 @@ int		keying(int keycode, t_s *zz)
 	return (1);
 }
 
-int		key_releasing(int keycode, t_s *zz)
+int		key_releasing(int keycode, t_game *zz)
 {
 	if (keycode == FORWARD_W_Z)
 		zz->data.forward = 0;

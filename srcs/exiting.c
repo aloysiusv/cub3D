@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:07:12 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:07:14 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	exiting(t_s *zz, char *str)
+int	exiting(t_game *zz, char *str)
 {
 	int i;
 

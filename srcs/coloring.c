@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:06:46 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:06:48 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void 	check_format(char *str, t_s *zz)
+void 	check_format(char *str, t_game *zz)
 {
 	int i;
 	int m;
@@ -55,7 +55,7 @@ void 	check_format(char *str, t_s *zz)
 		}
 }	
 
-int 	color_formating(char *str, t_s *zz)
+int 	color_formating(char *str, t_game *zz)
 {
 	int i;
 	if (str[1] != ' ')

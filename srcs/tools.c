@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:09:23 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:09:25 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool		ft_charinstr(char *str, char c)
 	return (0);
 }
 
-bool		beginning(char c, t_s *zz, int i, int j)
+bool		beginning(char c, t_game *zz, int i, int j)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
@@ -59,7 +59,7 @@ bool		beginning(char c, t_s *zz, int i, int j)
 	return (0);
 }
 
-bool		check_walls(t_s *zz)
+bool		check_walls(t_game *zz)
 {
 	int i;
 
@@ -146,7 +146,7 @@ bool		ft_check_resolution(const char *str)
 	return (1);
 }
 
-void		ft_resolution(const char *str, t_s *zz)
+void		ft_resolution(const char *str, t_game *zz)
 {
 	int		x;
 	int		i;

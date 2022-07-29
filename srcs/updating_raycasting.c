@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:09:31 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:09:32 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	updating_delta(t_s *zz)
+void	updating_delta(t_game *zz)
 {
 	if (zz->ray.raydiry == 0)
 		zz->ray.deltadistx = 0;
@@ -32,7 +32,7 @@ void	updating_delta(t_s *zz)
 			zz->ray.raydiry));
 }
 
-void	updating_ray(t_s *zz)
+void	updating_ray(t_game *zz)
 {
 	zz->ray.hit = 0;
 	zz->ray.perpwalldist = 0;

@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:08:48 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:08:50 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_map(t_s *zz)
+int	check_map(t_game *zz)
 {
 	char *str;
 	int fd;
@@ -53,7 +53,7 @@ int	check_map(t_s *zz)
 	return (fd);
 }
 
-int		pathing_texture(char *str, char **texture, t_s *zz, int j)
+int		pathing_texture(char *str, char **texture, t_game *zz, int j)
 {
 	zz->count = 0;
 	if (*texture != NULL)
@@ -83,7 +83,7 @@ int		pathing_texture(char *str, char **texture, t_s *zz, int j)
 	return (0);
 }
 
-bool	line_type(char *line, t_s *zz)
+bool	line_type(char *line, t_game *zz)
 {
 	int i;
 	i = 0;
@@ -116,7 +116,7 @@ bool	line_type(char *line, t_s *zz)
 	
 }
 
-bool	correct_map_infos(t_s *zz)
+bool	correct_map_infos(t_game *zz)
 {
 	if (zz->ground_color == -1 || zz->sky_color == -1 || zz->no == NULL ||
 			zz->so == NULL || zz->we == NULL ||
@@ -125,7 +125,7 @@ bool	correct_map_infos(t_s *zz)
 	return (1);
 }
 
-bool	fill_map_line(char *line, int i, t_s *zz)
+bool	fill_map_line(char *line, int i, t_game *zz)
 {
 	int j;
 	zz->map[i] = malloc(sizeof(char) * zz->xlines + 1);
@@ -151,7 +151,7 @@ bool	fill_map_line(char *line, int i, t_s *zz)
 	return (1);
 }
 
-int	ft_parsing(t_s *zz)
+int	ft_parsing(t_game *zz)
 {
 	char		*str;
 	int fd;

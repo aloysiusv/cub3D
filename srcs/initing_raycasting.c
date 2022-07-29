@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initing_raycasting.c                               :+:      :+:    :+:   */
+/*   init_raycasting.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:08:18 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:08:25 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	initing_moves(t_s *zz)
+void	init_moves(t_game *zz)
 {
 	zz->data.forward = 0;
 	zz->data.back = 0;
@@ -26,10 +26,10 @@ void	initing_moves(t_s *zz)
 	zz->ray.diry = 0;
 	zz->ray.planx = 0;
 	zz->ray.plany = 0;
-	initing_pov(zz);
+	init_pov(zz);
 }
 
-void	initing_pov(t_s *zz)
+void	init_pov(t_game *zz)
 {
 	if (zz->depart == 'N')
 		zz->ray.dirx = -1;

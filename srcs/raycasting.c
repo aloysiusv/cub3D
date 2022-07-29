@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:09:10 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:09:11 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 18:08:20 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		raycasting_loop(t_s *zz)
+int		raycasting_loop(t_game *zz)
 {
 	zz->ray.x = 0;
 	while (zz->ray.x < zz->rx)
@@ -31,9 +31,9 @@ int		raycasting_loop(t_s *zz)
 	return (0);
 }
 
-int		ft_mlx(t_s *zz)
+int		ft_mlx(t_game *zz)
 {
-	initing_moves(zz);
+	init_moves(zz);
 	if (!(zz->data.mlx_ptr = mlx_init()))
 		exiting(zz, "Mlx init impossible\n");
 	mlx_get_screen_size(zz->data.mlx_ptr, &zz->screenx, &zz->screeny);

@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:09:03 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:09:05 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	  stepsidedist(t_s *zz)
+void	  stepsidedist(t_game *zz)
 {
 	if (zz->ray.raydirx < 0)
 	{
@@ -41,7 +41,7 @@ void	  stepsidedist(t_s *zz)
 	incrementing_ray(zz);
 }
 
-void	incrementing_ray(t_s *zz)
+void	incrementing_ray(t_game *zz)
 {
 	while (zz->ray.hit == 0)
 	{
@@ -63,7 +63,7 @@ void	incrementing_ray(t_s *zz)
 	wall_limit(zz);
 }
 
-void	wall_limit(t_s *zz)
+void	wall_limit(t_game *zz)
 {
 	if (zz->ray.side == 0)
 		zz->ray.perpwalldist = ((double)zz->ray.mapx - \
@@ -82,7 +82,7 @@ void	wall_limit(t_s *zz)
 		zz->ray.drawend = zz->ry - 1;
 }
 
-void	change_frame(t_s *zz)
+void	change_frame(t_game *zz)
 {
 	void *tmp;
 

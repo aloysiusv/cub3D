@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_two.c                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 23:08:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
+/*   Created: 2021/05/22 19:38:57 by lrandria          #+#    #+#             */
+/*   Updated: 2021/06/10 20:46:43 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	check_map_infos(t_game *zz)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (check_walls(zz) == 1)
-		exiting(zz, "Map non entouree de 1\n");
-	if (zz->depart == 'Z')
-		exiting(zz, "Pas de joueur\n");
+	char	*new_str;
+	size_t	i;
+
+	if (s == 0 || f == 0)
+		return (0);
+	new_str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (new_str == 0)
+		return (0);
+	i = 0;
+	while (s[i])
+	{
+		new_str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	new_str[i] = '\0';
+	return (new_str);
 }

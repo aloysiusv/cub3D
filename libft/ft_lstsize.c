@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_two.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 23:08:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
+/*   Created: 2021/05/28 12:01:02 by lrandria          #+#    #+#             */
+/*   Updated: 2021/06/09 15:42:39 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	check_map_infos(t_game *zz)
+int	ft_lstsize(t_list *lst)
 {
-	if (check_walls(zz) == 1)
-		exiting(zz, "Map non entouree de 1\n");
-	if (zz->depart == 'Z')
-		exiting(zz, "Pas de joueur\n");
+	int	size;
+
+	if (lst == 0)
+		return (0);
+	size = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
 }

@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:08:39 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:08:42 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	moving_front_back(t_s *zz)
+void	moving_front_back(t_game *zz)
 {
 	if (zz->data.forward == 1)
 	{
@@ -34,7 +34,7 @@ void	moving_front_back(t_s *zz)
 	}
 }
 
-void	moving_left_right(t_s *zz)
+void	moving_left_right(t_game *zz)
 {
 	if (zz->data.right == 1)
 	{
@@ -59,7 +59,7 @@ void	moving_left_right(t_s *zz)
 }
 
 
-void	rotating_left_right(t_s *zz)
+void	rotating_left_right(t_game *zz)
 {
 	double oldplanx;
 	double olddirx;
@@ -80,7 +80,7 @@ void	rotating_left_right(t_s *zz)
 	rotating_left(zz, olddirx);
 }
 
-void	rotating_left(t_s *zz, double olddirx)
+void	rotating_left(t_game *zz, double olddirx)
 {
 	double oldplanex;
 

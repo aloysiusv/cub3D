@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_two.c                                      :+:      :+:    :+:   */
+/*   utils_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 23:08:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
+/*   Created: 2022/07/29 18:09:19 by lrandria          #+#    #+#             */
+/*   Updated: 2022/07/29 19:08:39 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D"
 
-void	check_map_infos(t_game *zz)
+void    rage_quit_error(char *msg)
 {
-	if (check_walls(zz) == 1)
-		exiting(zz, "Map non entouree de 1\n");
-	if (zz->depart == 'Z')
-		exiting(zz, "Pas de joueur\n");
+    write(2, msg, ft_strlen(msg));
+    exit(1)
 }

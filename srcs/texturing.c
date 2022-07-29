@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:09:16 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/27 23:09:18 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/07/29 18:08:20 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	initing_texture(t_s *zz)
+void	init_texture(t_game *zz)
 {
 	if (zz->ray.side == 0 && zz->ray.raydirx < 0)
 		zz->t.texdir = 0;
@@ -31,7 +31,7 @@ void	initing_texture(t_s *zz)
 	zz->t.wallx -= floor((zz->t.wallx));
 }
 
-void		coloring_wall(t_s *zz)
+void		coloring_wall(t_game *zz)
 {
 	int j;
 	int i;
@@ -50,10 +50,10 @@ void		coloring_wall(t_s *zz)
 			zz->ray.x] = zz->ground_color;
 }
 
-void	displaying_texture(t_s *zz, int x, int y)
+void	displaying_texture(t_game *zz, int x, int y)
 {
 	y = zz->ray.drawstart - 1;
-	initing_texture(zz);
+	init_texture(zz);
 	zz->t.step = 1.0 * zz->texture[0].height / zz->ray.lineheight;
 	zz->t.texx = (int)(zz->t.wallx * (double)zz->texture
 			[zz->t.texdir].width);
@@ -78,7 +78,7 @@ void	displaying_texture(t_s *zz, int x, int y)
 	}
 }
 
-void	get_texture(t_s *zz)
+void	get_texture(t_game *zz)
 {
 	if (!(zz->texture[0].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
 					zz->no, &(zz->texture[0].width),
@@ -99,7 +99,7 @@ void	get_texture(t_s *zz)
 	get_adress_texture(zz);
 }
 
-void	get_adress_texture(t_s *zz)
+void	get_adress_texture(t_game *zz)
 {
 	zz->texture[0].addr = (int *)mlx_get_data_addr(zz->texture[0].img,
 			&zz->texture[0].bits_per_pixel,

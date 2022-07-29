@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_two.c                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 23:08:55 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
+/*   Created: 2021/05/16 21:50:22 by lrandria          #+#    #+#             */
+/*   Updated: 2021/06/10 20:01:19 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	check_map_infos(t_game *zz)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (check_walls(zz) == 1)
-		exiting(zz, "Map non entouree de 1\n");
-	if (zz->depart == 'Z')
-		exiting(zz, "Pas de joueur\n");
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		i++;
+	}
+	return (0);
 }
