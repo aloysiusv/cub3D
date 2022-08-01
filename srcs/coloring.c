@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:06:46 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 06:56:43 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void 	check_format(char *str, t_game *zz)
+void 	check_format(char *str, t_game *root)
 {
 	int i;
 	int m;
@@ -23,7 +23,7 @@ void 	check_format(char *str, t_game *zz)
 	while (str[i] && str[i] == ' ')
 		i++;
 	if (str[i] && (str[i] < '0' && str[i] > '9'))
-		exiting(zz, "  ");
+		exiting(root, "  ");
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 		i++;
 	while (str[i] == ' ' || str[i] == ',')
@@ -33,7 +33,7 @@ void 	check_format(char *str, t_game *zz)
 		i++;
 	}
 	if (str[i] && str[i] < '0' && str[i] > '9')
-		exiting(zz, "  ");
+		exiting(root, "  ");
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 		i++;
 	while (str[i] && (str[i] == ' ' || str[i] == ','))
@@ -43,50 +43,50 @@ void 	check_format(char *str, t_game *zz)
 		i++;
 	}
 	if (str[i] && str[i] < '0' && str[i] > '9')
-		exiting(zz, "  ");
+		exiting(root, "  ");
 	if (m != 1 || n != 1)
-		exiting(zz, "  ");
+		exiting(root, "  ");
 	while (str[i])
 		{
 			if (str[i] == ',')
-				exiting(zz, "  ");
+				exiting(root, "  ");
 	
 			i++;
 		}
 }	
 
-int 	color_formating(char *str, t_game *zz)
+int 	color_formating(char *str, t_game *root)
 {
 	int i;
 	if (str[1] != ' ')
-		exiting(zz, "  ");
-	check_format(str, zz);
+		exiting(root, "  ");
+	check_format(str, root);
 	i = 1;
-	zz->r = 0;
-	zz->g = 0;
-	zz->b = 0;
+	root->r = 0;
+	root->g = 0;
+	root->b = 0;
 	while (str[i] && (str[i] == ' ' || str[i] == ','))
 		i++;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		zz->r = (zz->r * 10) + (str[i] - '0');
+		root->r = (root->r * 10) + (str[i] - '0');
 		i++;
 	}
 	while (str[i] && (str[i] == ' ' || str[i] == ','))
 		i++;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		zz->g = (zz->g * 10) + (str[i] - '0');
+		root->g = (root->g * 10) + (str[i] - '0');
 		i++;
 	}
 	while (str[i] && (str[i] == ' ' || str[i] == ','))
 		i++;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		zz->b = (zz->b * 10) + (str[i] - '0');
+		root->b = (root->b * 10) + (str[i] - '0');
 		i++;
 	}
-	if (zz->r > 255 || zz->g > 255 || zz->b > 255)
-		exiting(zz, "  ");
-	return ((zz->r & 0xff) << 16) + ((zz->g & 0xff) << 8) + (zz->b & 0xff);
+	if (root->r > 255 || root->g > 255 || root->b > 255)
+		exiting(root, "  ");
+	return ((root->r & 0xff) << 16) + ((root->g & 0xff) << 8) + (root->b & 0xff);
 }

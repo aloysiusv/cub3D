@@ -6,44 +6,44 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:08:30 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 06:56:43 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		keying(int keycode, t_game *zz)
+int		keying(int keycode, t_game *root)
 {
 	if (keycode == FORWARD_W_Z)
-		zz->data.forward = 1;
+		root->data.forward = 1;
 	else if (keycode == BACK_S_S)
-		zz->data.back = 1;
+		root->data.back = 1;
 	else if (keycode == LEFT_A_Q)
-		zz->data.left = 1;
+		root->data.left = 1;
 	else if (keycode == RIGHT_D_D)
-		zz->data.right = 1;
+		root->data.right = 1;
 	else if (keycode == ROTATE_LEFT)
-		zz->data.rotate_left = 1;
+		root->data.rotate_left = 1;
 	else if (keycode == ROTATE_RIGHT)
-		zz->data.rotate_right = 1;
+		root->data.rotate_right = 1;
 	else if (keycode == 65307)
-		exiting(zz, "\n");
+		exiting(root, "\n");
 	return (1);
 }
 
-int		key_releasing(int keycode, t_game *zz)
+int		key_releasing(int keycode, t_game *root)
 {
 	if (keycode == FORWARD_W_Z)
-		zz->data.forward = 0;
+		root->data.forward = 0;
 	else if (keycode == BACK_S_S)
-		zz->data.back = 0;
+		root->data.back = 0;
 	else if (keycode == LEFT_A_Q)
-		zz->data.left = 0;
+		root->data.left = 0;
 	else if (keycode == RIGHT_D_D)
-		zz->data.right = 0;
+		root->data.right = 0;
 	else if (keycode == ROTATE_LEFT)
-		zz->data.rotate_left = 0;
+		root->data.rotate_left = 0;
 	else if (keycode == ROTATE_RIGHT)
-		zz->data.rotate_right = 0;
+		root->data.rotate_right = 0;
 	return (1);
 }

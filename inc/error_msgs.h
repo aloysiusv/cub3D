@@ -13,20 +13,21 @@
 #ifndef ERROR_MSGS_H
 # define ERROR_MSGS_H
 
-# define INVALID_FORMAT	"Error\nInvalid file format or extension\n"
-# define INVALID_SHAPE	"Error\nMap has an invalid shape\n"
-# define INVALID_CHAR	"Error\nFound an invalid char pattern\n"
-# define OPEN_FAILURE	"Error\nOpen failed\n"
-# define INIT_FAILURE	"Error\nTroubles while reading or init Map\n"
-# define MLX_FAILURE	"Error\nMlx initializaton failed\n"
-# define IMG_FAILURE	"Error\nTroubles while loading or init image\n"
-# define COLOUR_FAILURE	"Error\nTroubles while loading or init color\n"
-# define HAS_CLONES		"Error\nData can't be set twice\n"
-# define E_OPEN_MAP		"Error\nMap open\n"
-# define E_BIG_MAP		"Error\nMap too big for the window\n"
-# define E_SPAWN_ERR	"Error\nNumber of spawn required is one\n"
-# define E_NO_DATA		"Error\nSome required data is missing\n"
-# define E_MLC_ERR		"Error\nMalloc failed\n"
+# define ERROR_NB_ARGS			"Error\nInvalid number of arguments\n"
+# define ERROR_FORMAT			"Error\nInvalid file format or extension\n"
+# define ERROR_OPEN				"Error\nOpen failed\n"
+# define ERROR_MALLOC			"Error\nMalloc failed\n"
+# define ERROR_MAP_CHAR			"Error\nmap: invalid char\n"
+# define ERROR_MAP_SHAPE		"Error\nmap: invalid shape\n"
+# define ERROR_MAP_WALLS		"Error\nmap: invalid walls\n"
+# define ERROR_MAP_PLAYER		"Error\nmap: invalid nb of player\n"
+# define ERROR_MAP_SIZE			"Error\nmap: invalid size\n"
+# define ERROR_INIT_MAP			"Error\ninit: can't init map\n"
+# define ERROR_INIT_MLX			"Error\ninit: can't init mlx\n"
+# define ERROR_INIT_IMG			"Error\ninit: can't init img\n"
+# define ERROR_INIT_COLOUR		"Error\ninit: can't init colour\n"
+# define ERROR_DATA_CLONE		"Error\ndata: can't be set twice\n"
+# define ERROR_DATA_MISSING		"Error\ndata: missing data\n"
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:09:23 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:11 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 06:56:43 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,39 +45,39 @@ bool		ft_charinstr(char *str, char c)
 	return (0);
 }
 
-bool		beginning(char c, t_game *zz, int i, int j)
+bool		beginning(char c, t_game *root, int i, int j)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
-		if (zz->depart != 0)
-			exiting(zz, "Plus d'un joueur\n");
-		zz->depart = c;
-		zz->dx = i;
-		zz->dy = j;
+		if (root->depart != 0)
+			exiting(root, "Plus d'un joueur\n");
+		root->depart = c;
+		root->dx = i;
+		root->dy = j;
 		return (1);
 	}
 	return (0);
 }
 
-bool		check_walls(t_game *zz)
+bool		check_walls(t_game *root)
 {
 	int i;
 
 	i = 0;
-	while (zz->map[0][i])
+	while (root->map[0][i])
 	{
-		if (zz->map[0][i] != '1')
+		if (root->map[0][i] != '1')
 			return (1);
-		if (zz->map[zz->ylines - 1][i] != '1')
+		if (root->map[root->ylines - 1][i] != '1')
 			return (1);
 		i++;
 	}
 	i = 0;
-	while (i < zz->ylines)
+	while (i < root->ylines)
 	{
-		if (zz->map[i][0] != '1')
+		if (root->map[i][0] != '1')
 			return (1);
-		if (zz->map[i][zz->xlines - 1] != '1')
+		if (root->map[i][root->xlines - 1] != '1')
 			return (1);
 		i++;
 	}
@@ -146,7 +146,7 @@ bool		ft_check_resolution(const char *str)
 	return (1);
 }
 
-void		ft_resolution(const char *str, t_game *zz)
+void		ft_resolution(const char *str, t_game *root)
 {
 	int		x;
 	int		i;
@@ -154,7 +154,7 @@ void		ft_resolution(const char *str, t_game *zz)
 	x = 0;
 	i = 1;
 	if (!ft_check_resolution(str))
-		exiting(zz, "  ");
+		exiting(root, "  ");
 	i = 1;
 	while (str[i] && str[i] == ' ')
 		i++;
@@ -163,7 +163,7 @@ void		ft_resolution(const char *str, t_game *zz)
 		x = (x * 10) + (str[i] - '0');
 		i++;
 	}
-	zz->rx = x;
+	root->rx = x;
 	x = 0;
 	i = 1;
 	while (str[i] && str[i] == ' ')
@@ -173,7 +173,7 @@ void		ft_resolution(const char *str, t_game *zz)
 		x = (x * 10) + (str[i] - '0');
 		i++;
 	}
-	zz->ry = x;
+	root->ry = x;
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

@@ -12,39 +12,39 @@
 
 #include "cub3d.h"
 
-void	init_moves(t_game *zz)
+void	init_moves(t_game *root)
 {
-	zz->data.forward = 0;
-	zz->data.back = 0;
-	zz->data.left = 0;
-	zz->data.right = 0;
-	zz->data.rotate_right = 0;
-	zz->data.rotate_left = 0;
-	zz->ray.posx = (double)zz->dx + 0.5;
-	zz->ray.posy = (double)zz->dy + 0.5;
-	zz->ray.dirx = 0;
-	zz->ray.diry = 0;
-	zz->ray.planx = 0;
-	zz->ray.plany = 0;
-	init_pov(zz);
+	root->data.forward = 0;
+	root->data.back = 0;
+	root->data.left = 0;
+	root->data.right = 0;
+	root->data.rotate_right = 0;
+	root->data.rotate_left = 0;
+	root->ray.posx = (double)root->dx + 0.5;
+	root->ray.posy = (double)root->dy + 0.5;
+	root->ray.dirx = 0;
+	root->ray.diry = 0;
+	root->ray.planx = 0;
+	root->ray.plany = 0;
+	init_pov(root);
 }
 
-void	init_pov(t_game *zz)
+void	init_pov(t_game *root)
 {
-	if (zz->depart == 'N')
-		zz->ray.dirx = -1;
-	if (zz->depart == 'S')
-		zz->ray.dirx = 1;
-	if (zz->depart == 'E')
-		zz->ray.diry = 1;
-	if (zz->depart == 'W')
-		zz->ray.diry = -1;
-	if (zz->depart == 'N')
-		zz->ray.plany = 0.66;
-	if (zz->depart == 'S')
-		zz->ray.plany = -0.66;
-	if (zz->depart == 'E')
-		zz->ray.planx = 0.66;
-	if (zz->depart == 'W')
-		zz->ray.planx = -0.66;
+	if (root->depart == 'N')
+		root->ray.dirx = -1;
+	if (root->depart == 'S')
+		root->ray.dirx = 1;
+	if (root->depart == 'E')
+		root->ray.diry = 1;
+	if (root->depart == 'W')
+		root->ray.diry = -1;
+	if (root->depart == 'N')
+		root->ray.plany = 0.66;
+	if (root->depart == 'S')
+		root->ray.plany = -0.66;
+	if (root->depart == 'E')
+		root->ray.planx = 0.66;
+	if (root->depart == 'W')
+		root->ray.planx = -0.66;
 }

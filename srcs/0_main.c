@@ -4,33 +4,45 @@
 /*   0_main.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */s
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 17:40:12 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 17:40:34 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 06:52:47 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_args(int argc, char **argv, char **envp)
+static bool	check_args(int ac, char **av)
 {
-	// if (!envp)
-	// 	return (1);
-	// if (argc != 2)
-	// 	return (1);
-	// if (ft_strlenz(argv[1]) < 5)
-	// 	return (1);
-	if (ft_strncmp(&argv[1][ft_strlenz(argv[1]) - 4], ".cub", 5) != 1)
-		rage_quit_error(INVALID_FORMAT);
-}
-
-int		main(int argc, char **argv, char **envp)
-{
-	t_game root;
-
-	check_args(argc, argv, envp);
-	init_parsing(argv, &root);
-	ft_parsing(&root);
+	if (ac != 2)
+		return(ft_putstr_fd(ERROR_NB_ARGS, 2), 1);
+	if (ft_strlen(av[1]) < 5)
+		return(ft_putstr_fd(ERROR_FORMAT, 2), 1);
+	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".cub", 5) != 0)
+		return(ft_putstr_fd(ERROR_FORMAT, 2), 1);
 	return (0);
 }
 
+}
+
+static void	initialise(char **argv, t_game *root)
+{
+	ft_memset(root, 0, sizeof(t_game));
+	ft_memset(root->texture, 0, sizeof());
+	root->map_name = argv[1];
+	root->ground_color = -1;
+	root->sky_color = -1;
+}
+
+int		main(int argc, char **argv)
+{
+	t_game root;
+
+	if (check_args(argc, argv) == 1)
+		return (1);
+	initialise(argv, &root);
+	parsing(&root);
+	launch_game(&root);
+	free_all(&root);
+	return (0);
+}

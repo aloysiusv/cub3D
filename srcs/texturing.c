@@ -6,111 +6,111 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:09:16 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 18:08:20 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 06:56:43 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_texture(t_game *zz)
+void	init_texture(t_game *root)
 {
-	if (zz->ray.side == 0 && zz->ray.raydirx < 0)
-		zz->t.texdir = 0;
-	if (zz->ray.side == 0 && zz->ray.raydirx >= 0)
-		zz->t.texdir = 1;
-	if (zz->ray.side == 1 && zz->ray.raydiry < 0)
-		zz->t.texdir = 2;
-	if (zz->ray.side == 1 && zz->ray.raydiry >= 0)
-		zz->t.texdir = 3;
-	if (zz->ray.side == 0)
-		zz->t.wallx = zz->ray.posy + zz->ray.perpwalldist \
-						* zz->ray.raydiry;
+	if (root->ray.side == 0 && root->ray.raydirx < 0)
+		root->t.texdir = 0;
+	if (root->ray.side == 0 && root->ray.raydirx >= 0)
+		root->t.texdir = 1;
+	if (root->ray.side == 1 && root->ray.raydiry < 0)
+		root->t.texdir = 2;
+	if (root->ray.side == 1 && root->ray.raydiry >= 0)
+		root->t.texdir = 3;
+	if (root->ray.side == 0)
+		root->t.wallx = root->ray.posy + root->ray.perpwalldist \
+						* root->ray.raydiry;
 	else
-		zz->t.wallx = zz->ray.posx + zz->ray.perpwalldist \
-						* zz->ray.raydirx;
-	zz->t.wallx -= floor((zz->t.wallx));
+		root->t.wallx = root->ray.posx + root->ray.perpwalldist \
+						* root->ray.raydirx;
+	root->t.wallx -= floor((root->t.wallx));
 }
 
-void		coloring_wall(t_game *zz)
+void		coloring_wall(t_game *root)
 {
 	int j;
 	int i;
 
 	j = -1;
-	zz->ray.drawend = zz->ry - zz->ray.drawstart;
-	i = zz->ray.drawend;
-	while (++j < zz->ray.drawstart)
-		zz->data.addr[j * zz->data.line_length / 4 +
-			zz->ray.x] = zz->sky_color;
-	if (j <= zz->ray.drawend)
-		displaying_texture(zz, zz->ray.x, j);
+	root->ray.drawend = root->ry - root->ray.drawstart;
+	i = root->ray.drawend;
+	while (++j < root->ray.drawstart)
+		root->data.addr[j * root->data.line_length / 4 +
+			root->ray.x] = root->sky_color;
+	if (j <= root->ray.drawend)
+		displaying_texture(root, root->ray.x, j);
 	j = i;
-	while (++j < zz->ry)
-		zz->data.addr[j * zz->data.line_length / 4 +
-			zz->ray.x] = zz->ground_color;
+	while (++j < root->ry)
+		root->data.addr[j * root->data.line_length / 4 +
+			root->ray.x] = root->ground_color;
 }
 
-void	displaying_texture(t_game *zz, int x, int y)
+void	displaying_texture(t_game *root, int x, int y)
 {
-	y = zz->ray.drawstart - 1;
-	init_texture(zz);
-	zz->t.step = 1.0 * zz->texture[0].height / zz->ray.lineheight;
-	zz->t.texx = (int)(zz->t.wallx * (double)zz->texture
-			[zz->t.texdir].width);
-	if (zz->ray.side == 0 && zz->ray.raydirx > 0)
-		zz->t.texx = zz->texture[zz->t.texdir].width -
-			zz->t.texx - 1;
-	if (zz->ray.side == 1 && zz->ray.raydiry < 0)
-		zz->t.texx = zz->texture[zz->t.texdir].width -
-			zz->t.texx - 1;
-	zz->t.texpos = (zz->ray.drawstart - zz->ry / 2 +
-			zz->ray.lineheight / 2) * zz->t.step;
-	while (++y <= zz->ray.drawend)
+	y = root->ray.drawstart - 1;
+	init_texture(root);
+	root->t.step = 1.0 * root->texture[0].height / root->ray.lineheight;
+	root->t.texx = (int)(root->t.wallx * (double)root->texture
+			[root->t.texdir].width);
+	if (root->ray.side == 0 && root->ray.raydirx > 0)
+		root->t.texx = root->texture[root->t.texdir].width -
+			root->t.texx - 1;
+	if (root->ray.side == 1 && root->ray.raydiry < 0)
+		root->t.texx = root->texture[root->t.texdir].width -
+			root->t.texx - 1;
+	root->t.texpos = (root->ray.drawstart - root->ry / 2 +
+			root->ray.lineheight / 2) * root->t.step;
+	while (++y <= root->ray.drawend)
 	{
-		zz->t.texy = (int)zz->t.texpos &
-			(zz->texture[zz->t.texdir].height - 1);
-		zz->t.texpos += zz->t.step;
-		if (y < zz->ry && x < zz->rx)
-			zz->data.addr[y * zz->data.line_length / 4 + x] =
-				zz->texture[zz->t.texdir].addr[zz->t.texy *
-					zz->texture[zz->t.texdir].line_length /
-					4 + zz->t.texx];
+		root->t.texy = (int)root->t.texpos &
+			(root->texture[root->t.texdir].height - 1);
+		root->t.texpos += root->t.step;
+		if (y < root->ry && x < root->rx)
+			root->data.addr[y * root->data.line_length / 4 + x] =
+				root->texture[root->t.texdir].addr[root->t.texy *
+					root->texture[root->t.texdir].line_length /
+					4 + root->t.texx];
 	}
 }
 
-void	get_texture(t_game *zz)
+void	get_texture(t_game *root)
 {
-	if (!(zz->texture[0].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
-					zz->no, &(zz->texture[0].width),
-					&(zz->texture[0].height))))
-		exiting(zz, "Texture SO\n");
-	if (!(zz->texture[1].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
-					zz->so, &(zz->texture[1].width),
-					&(zz->texture[1].height))))
-		exiting(zz, "Texture NO\n");
-	if (!(zz->texture[2].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
-					zz->we, &(zz->texture[2].width),
-					&(zz->texture[2].height))))
-		exiting(zz, "Texture EA\n");
-	if (!(zz->texture[3].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
-					zz->ea, &(zz->texture[3].width),
-					&(zz->texture[3].height))))
-		exiting(zz, "Texture WE\n");
-	get_adress_texture(zz);
+	if (!(root->texture[0].img = mlx_xpm_file_to_image(root->data.mlx_ptr,
+					root->no, &(root->texture[0].width),
+					&(root->texture[0].height))))
+		exiting(root, "Texture SO\n");
+	if (!(root->texture[1].img = mlx_xpm_file_to_image(root->data.mlx_ptr,
+					root->so, &(root->texture[1].width),
+					&(root->texture[1].height))))
+		exiting(root, "Texture NO\n");
+	if (!(root->texture[2].img = mlx_xpm_file_to_image(root->data.mlx_ptr,
+					root->we, &(root->texture[2].width),
+					&(root->texture[2].height))))
+		exiting(root, "Texture EA\n");
+	if (!(root->texture[3].img = mlx_xpm_file_to_image(root->data.mlx_ptr,
+					root->ea, &(root->texture[3].width),
+					&(root->texture[3].height))))
+		exiting(root, "Texture WE\n");
+	get_adress_texture(root);
 }
 
-void	get_adress_texture(t_game *zz)
+void	get_adress_texture(t_game *root)
 {
-	zz->texture[0].addr = (int *)mlx_get_data_addr(zz->texture[0].img,
-			&zz->texture[0].bits_per_pixel,
-			&zz->texture[0].line_length, &zz->texture[0].endian);
-	zz->texture[1].addr = (int *)mlx_get_data_addr(zz->texture[1].img,
-			&zz->texture[1].bits_per_pixel,
-			&zz->texture[1].line_length, &zz->texture[1].endian);
-	zz->texture[2].addr = (int *)mlx_get_data_addr(zz->texture[2].img,
-			&zz->texture[2].bits_per_pixel,
-			&zz->texture[2].line_length, &zz->texture[2].endian);
-	zz->texture[3].addr = (int *)mlx_get_data_addr(zz->texture[3].img,
-			&zz->texture[3].bits_per_pixel,
-			&zz->texture[3].line_length, &zz->texture[3].endian);
+	root->texture[0].addr = (int *)mlx_get_data_addr(root->texture[0].img,
+			&root->texture[0].bits_per_pixel,
+			&root->texture[0].line_length, &root->texture[0].endian);
+	root->texture[1].addr = (int *)mlx_get_data_addr(root->texture[1].img,
+			&root->texture[1].bits_per_pixel,
+			&root->texture[1].line_length, &root->texture[1].endian);
+	root->texture[2].addr = (int *)mlx_get_data_addr(root->texture[2].img,
+			&root->texture[2].bits_per_pixel,
+			&root->texture[2].line_length, &root->texture[2].endian);
+	root->texture[3].addr = (int *)mlx_get_data_addr(root->texture[3].img,
+			&root->texture[3].bits_per_pixel,
+			&root->texture[3].line_length, &root->texture[3].endian);
 }

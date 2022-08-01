@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:01:00 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 18:08:20 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 06:56:43 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,13 +127,15 @@ typedef struct		s_game
 	t_texture		t;
 }					t_game;
 
+							/* PARSING */
+
+bool			check_args(int ac, char **av);
+
 //COLORING 
-void			check_format(char *str, t_game *zz);
-int				color_formating(char *str, t_game *zz);
-//CUB3D 
-bool			check_arguments(int argc, char **argv, char **envp);
+void			check_format(char *str, t_game *root);
+int				color_formating(char *str, t_game *root);
 //EXITING 
-int				exiting(t_game *zz, char *str);
+int				exiting(t_game *root, char *str);
 //GNL_UTIlS 
 int				ft_strlenz(char *str);
 char			*ft_strchrz(char *str);
@@ -145,55 +147,55 @@ char			*get_the_linez(char *buffer);
 char			*new_bufferz(char *buffer);
 char			*get_next_linez(int fd);
 //init_PARSING 
-void			init_parsing(char **argv, t_game *zz);
+void			init_parsing(char **argv, t_game *root);
 //init_RAYCASTING 
-void			init_moves(t_game *zz);
-void			init_pov(t_game *zz);
+void			init_moves(t_game *root);
+void			init_pov(t_game *root);
 //KEYING 
-int				keying(int keycode, t_game *zz);
-int				key_releasing(int keycode, t_game *zz);
+int				keying(int keycode, t_game *root);
+int				key_releasing(int keycode, t_game *root);
 //MOVING 
-void			moving_front_back(t_game *zz);
-void			moving_left_right(t_game *zz);
-void			rotating_left_right(t_game *zz);
-void			rotating_left(t_game *zz, double olddirx);
+void			moving_front_back(t_game *root);
+void			moving_left_right(t_game *root);
+void			rotating_left_right(t_game *root);
+void			rotating_left(t_game *root, double olddirx);
 //PARSING_ONE
-int				check_map(t_game *zz);
-int				pathing_texture(char *str, char **texture, t_game *zz, int j);
-bool			line_type(char *line, t_game *zz);
-bool			correct_map_infos(t_game *zz);
-bool			fill_map_line(char *line, int i, t_game *zz);
-int				ft_parsing(t_game *zz);
+int				check_map(t_game *root);
+int				pathing_texture(char *str, char **texture, t_game *root, int j);
+bool			line_type(char *line, t_game *root);
+bool			correct_map_infos(t_game *root);
+bool			fill_map_line(char *line, int i, t_game *root);
+int				ft_parsing(t_game *root);
 //PARSING_TWO
-void			check_map_infos(t_game *zz);
+void			check_map_infos(t_game *root);
 //RAYCASTING_TOOLS
-void			stepsidedist(t_game *zz);
-void			incrementing_ray(t_game *zz);
-void			wall_limit(t_game *zz);
-void			change_frame(t_game *zz);
+void			stepsidedist(t_game *root);
+void			incrementing_ray(t_game *root);
+void			wall_limit(t_game *root);
+void			change_frame(t_game *root);
 //RAYCASTING 
-int				raycasting_loop(t_game *zz);
-int				ft_mlx(t_game *zz);
+int				raycasting_loop(t_game *root);
+int				ft_mlx(t_game *root);
 //TEXTURING 
-void			init_texture(t_game *zz);
-void			coloring_wall(t_game *zz);
-void			displaying_texture(t_game *zz, int x, int y);
-void			get_texture(t_game *zz);
-void			get_adress_texture(t_game *zz);
+void			init_texture(t_game *root);
+void			coloring_wall(t_game *root);
+void			displaying_texture(t_game *root, int x, int y);
+void			get_texture(t_game *root);
+void			get_adress_texture(t_game *root);
 //TOOLS 
 int				ft_strlen2(char *str);
 bool			ft_charinstr(char *str, char c);
-bool			beginning(char c, t_game *zz, int i, int j);
-bool			check_walls(t_game *zz);
+bool			beginning(char c, t_game *root, int i, int j);
+bool			check_walls(t_game *root);
 bool			is_whitespace(char c);
 bool			empty_line(char *str);
 bool			is_map_char(char c);
 bool			ft_is_map(char *str);
 bool			ft_check_resolution(const char *str);
-void			ft_resolution(const char *str, t_game *zz);
+void			ft_resolution(const char *str, t_game *root);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 //UPDATING_RAYCASTING
-void			updating_delta(t_game *zz);
-void			updating_ray(t_game *zz);
+void			updating_delta(t_game *root);
+void			updating_ray(t_game *root);
 
 #endif
