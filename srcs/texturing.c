@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:09:16 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/01 06:56:43 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:06:48 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void		coloring_wall(t_game *root)
 	i = root->ray.drawend;
 	while (++j < root->ray.drawstart)
 		root->data.addr[j * root->data.line_length / 4 +
-			root->ray.x] = root->sky_color;
+			root->ray.x] = root->floor;
 	if (j <= root->ray.drawend)
 		displaying_texture(root, root->ray.x, j);
 	j = i;
 	while (++j < root->ry)
 		root->data.addr[j * root->data.line_length / 4 +
-			root->ray.x] = root->ground_color;
+			root->ray.x] = root->floor;
 }
 
 void	displaying_texture(t_game *root, int x, int y)

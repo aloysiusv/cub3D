@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_errors.c                                     :+:      :+:    :+:   */
+/*   ft_strclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gamarcha <gamarcha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/29 18:09:19 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/31 18:03:21 by lrandria         ###   ########.fr       */
+/*   Created: 2021/05/04 22:14:33 by gamarcha          #+#    #+#             */
+/*   Updated: 2021/06/02 16:31:10 by gamarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D"
+#include "libft.h"
 
-void    rage_quit_error(t_game *root, char *msg)
+size_t	ft_strclen(const char *s, const char *charset)
 {
-    if (root)
-        free_all(root);
-    write(2, msg, ft_strlen(msg));
-    exit(1)
+	size_t			i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (ft_ischarset(s[i], charset))
+			break ;
+		i++;
+	}
+	return (i);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_parsing.c                                        :+:      :+:    :+:   */
+/*   1_parsing_nsatral.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 17:53:30 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/31 17:53:33 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:06:48 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int		pathing_texture(char *str, char **texture, t_game *root, int j)
 	{
 		if (str[j] != ' ' && str[j] != '.')
 			exiting(root, "  ");
-
 		j++;
 	}
 	if (!(*texture = (char *)(malloc(sizeof(char) * (ft_strlen2(str) + 1)))))
@@ -98,9 +97,9 @@ bool	line_type(char *line, t_game *root)
 			exiting(root, "wrong resolution");
 	}
 	if (line[i] == 'F')
-		root->ground_color = color_formating(line, root);
+		root->floor = color_formating(line, root);
 	if (line[i] == 'C')
-		root->sky_color = color_formating(line, root);
+		root->floor = color_formating(line, root);
 	i++;
 	if (line[i] == '\0')
 		return (0);
@@ -118,7 +117,7 @@ bool	line_type(char *line, t_game *root)
 
 bool	correct_map_infos(t_game *root)
 {
-	if (root->ground_color == -1 || root->sky_color == -1 || root->no == NULL ||
+	if (root->floor == -1 || root->floor == -1 || root->no == NULL ||
 			root->so == NULL || root->we == NULL ||
 			root->ea == NULL)
 				return (0);

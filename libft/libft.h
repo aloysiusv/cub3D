@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 20:46:31 by lrandria          #+#    #+#             */
-/*   Updated: 2022/02/25 03:58:22 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:37:45 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-int		get_next_line(int fd, char **line);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
+int		ft_isset(char c, char const *my_set);
 char	*ft_itoa(int n);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -39,6 +39,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
+char	**ft_split_set(char const *s, char *seps);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strclen(char *buf, char c);
 char	*ft_strdup(const char *s);

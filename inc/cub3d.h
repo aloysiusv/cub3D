@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:01:00 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/01 06:56:43 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 23:00:13 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
 # include "error_msgs.h"
+
+# define ALL_SPACES	" 	\x20\x08\x09\x0a\x0b\x0c\x0d"
+# define SPACE_TAB	" 	"
 
 # define ROTATE_LEFT	65361
 # define ROTATE_RIGHT	65363
@@ -101,20 +104,19 @@ typedef struct		s_data
 typedef struct		s_game
 {
 	char			*map_name;
-	int				rx;
-	int				ry;
-	int 			ground_color;
-	int 		 	sky_color;
-	int 			r;
-	int 			g;
-	int 			b;
+	size_t			nb_lines;
 	char			*no;
 	char			*so;
 	char			*we;
 	char			*ea;
+	char			**map;
+	int				rx;
+	int				ry;
+	int 			rgb[3];
+	int 			floor;
+	int 		 	ceiling;
 	int				ylines;
 	int				xlines;
-	char			**map;
 	char			depart;
 	int				dx;
 	int				dy;
@@ -127,9 +129,24 @@ typedef struct		s_game
 	t_texture		t;
 }					t_game;
 
-							/* PARSING */
+/* ******************************PARSING************************************ */
 
 bool			check_args(int ac, char **av);
+
+//utils_str.c
+bool			is_only_blanks(char *line);
+char			*trim_spaces(char *str);
+
+//utils_tab.c
+size_t			get_tab_size(char **tab);
+
+//utils_free.c
+void	free_all(t_game *root);
+void	free_tab(char **tab);
+void	oops_crash(t_game *root, char *msg);
+void	clean_error_exit(t_game *root, char *line, char *error_msg);
+
+/****************************************************************************/
 
 //COLORING 
 void			check_format(char *str, t_game *root);

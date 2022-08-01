@@ -6,28 +6,37 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 18:02:53 by lrandria          #+#    #+#             */
-/*   Updated: 2022/07/29 21:13:21 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/01 22:06:27 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_MSGS_H
 # define ERROR_MSGS_H
 
-# define ERROR_NB_ARGS			"Error\nInvalid number of arguments\n"
-# define ERROR_FORMAT			"Error\nInvalid file format or extension\n"
-# define ERROR_OPEN				"Error\nOpen failed\n"
-# define ERROR_MALLOC			"Error\nMalloc failed\n"
-# define ERROR_MAP_CHAR			"Error\nmap: invalid char\n"
-# define ERROR_MAP_SHAPE		"Error\nmap: invalid shape\n"
-# define ERROR_MAP_WALLS		"Error\nmap: invalid walls\n"
-# define ERROR_MAP_PLAYER		"Error\nmap: invalid nb of player\n"
-# define ERROR_MAP_SIZE			"Error\nmap: invalid size\n"
-# define ERROR_INIT_MAP			"Error\ninit: can't init map\n"
-# define ERROR_INIT_MLX			"Error\ninit: can't init mlx\n"
-# define ERROR_INIT_IMG			"Error\ninit: can't init img\n"
-# define ERROR_INIT_COLOUR		"Error\ninit: can't init colour\n"
-# define ERROR_DATA_CLONE		"Error\ndata: can't be set twice\n"
-# define ERROR_DATA_MISSING		"Error\ndata: missing data\n"
+# define ERROR_NB_ARGS			"invalid number of arguments\n"
+# define ERROR_FILE_FORMAT		"invalid file format or extension\n"
+# define ERROR_FILE_EMPTY		"file: is empty\n"
+# define ERROR_FILE_SIZE		"file: is too large. Not nice! :(\n"
+# define ERROR_FILE_ASCII		"file: contains non-ascii characters\n"
+# define ERROR_FILE_OPEN		"file: can't open file\n"
+# define ERROR_MALLOC			"malloc failed\n"
+# define ERROR_MAP_CHAR			"map: invalid char\n"
+# define ERROR_MAP_SHAPE		"map: invalid shape\n"
+# define ERROR_MAP_WALLS		"map: invalid walls\n"
+# define ERROR_MAP_PLAYER		"map: invalid nb of player\n"
+# define ERROR_MAP_SIZE			"map: invalid size\n"
+# define ERROR_INIT_MAP			"init: can't init map\n"
+# define ERROR_INIT_MLX			"init: can't init mlx\n"
+# define ERROR_INIT_IMG			"init: can't init img\n"
+# define ERROR_INIT_COLOUR		"init: can't init colour\n"
+# define ERROR_BAD_ID		    "invalid identifier\n"
+# define ERROR_BAD_PATH		    "invalid path\n"
+# define ERROR_BAD_COLOUR	    "invalid colour\n"
+# define ERROR_NO_PATH		    "missing path\n"
+# define ERROR_NO_COLOUR	    "missing colour\n"
+# define ERROR_DATA_CLONE		"data: can't be set twice\n"
+# define ERROR_DATA_INVALID		"data: invalid data\n"
+# define ERROR_DATA_MISSING		"data: missing data\n"
 
 #endif
 
