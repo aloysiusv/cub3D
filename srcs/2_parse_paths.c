@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3_check_cub_info.c                                 :+:      :+:    :+:   */
+/*   2_parse_paths.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 11:57:16 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/01 23:21:24 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/04 10:39:29 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,58 +51,11 @@ static bool	get_paths(t_game *root, char *line)
 	return (false);
 }
 
-static int	ft_atoi_cub(char *line)
+static bool	gathered_all_data(t_game *root)
 {
-	int	i;
-	int	res;
-
-	i = 0;
-	res = 0;
-	while (ft_isdigit(line[i]))
-	{
-		res = (res * 10) + (line[i] - '0');
-		i++;
-	}
-	return (res);
-}
-
-static bool	stock_colours(t_game *root, char *line, int txtr)
-{
-	size_t	i;
-
-	i = 1;
-	while (line[i] && ft_isset(line[i], SPACE_TAB))
-		i++;
-	if (!ft_isdigit(line[i]))
-		clean_error_exit(root, line, ERROR_COLOUR_INVALID);
-	else
-	{
-		line = &line[i];
-		root->rgb[0] = ft_atoi_cub(line);
-		i++;
-		if (line[i] == ',')
-		line = &line[i];
-		root->rgb[1] = ft_atoi_cub(line);
-	}
-	if (txtr < 0 || txtr > 255)
-		clean_error_exit(root, line, ERROR_COLOUR_INVALID);
-}
-
-static bool	get_colours(t_game *root, char *line)
-{
-	size_t	i;
-
-	i = 0;
-	if (line[i] == 'C' && line[i + 1])
-	{
-		stock_colours(root, line, root->ceiling);
+	if (root->no && root->so && root->we && root->ea && root->so
+		&& root->ceiling && root->floor)
 		return (true);
-	}
-	else if (line[i] == 'F' && line[i + 1])
-	{
-		stock_colours(root, line, root->floor);
-		return (true);
-	}
 	return (false);
 }
 
@@ -122,12 +75,12 @@ void	check_info(t_game *root, int fd)
 			if (get_paths(root, line) == false
 				&& get_colours(root, line) == false)
 				clean_error_exit(root, line, ERROR_DATA_INVALID);
-			// if (gathered_all_data(root) == true)
-			// {
-			// 	free(line);
-			// 	get_map(root, line_number);
-			// 	return ;
-			// }
+			if (gathered_all_data(root) == true)
+			{
+				free(line);
+				get_map(root, line_number);
+				return ;
+			}
 		}
 		free(line);
 		line = get_next_linez(fd);

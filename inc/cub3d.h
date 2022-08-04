@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:01:00 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/01 23:00:13 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/04 03:11:46 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ typedef struct		s_data
 typedef struct		s_game
 {
 	char			*map_name;
-	size_t			nb_lines;
+	char			**map;
 	char			*no;
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			**map;
+	size_t			nb_lines;
 	int				rx;
 	int				ry;
 	int 			rgb[3];

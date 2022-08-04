@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2_check_cub_file.c                                 :+:      :+:    :+:   */
+/*   1_parse_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 11:58:01 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/01 13:43:40 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/04 10:36:17 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ static void	check_if_ascii(char *line)
 
 	i = 0;
 	while (line[i])
-		if (!ft_isascii(line[i++]))
+	{
+		if (!ft_isascii(line[i]))
 		{
 			free(line);
 			oops_crash(NULL, ERROR_FILE_ASCII);
 		}
+		i++;
+	}
 }
 
 void	check_file(t_game *root, int *fd)
