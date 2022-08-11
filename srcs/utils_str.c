@@ -6,11 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 17:14:10 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/01 21:02:54 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/11 17:25:32 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "cub3D.h"
+#include "../inc/cub3d.h"
 
 bool	is_only_blanks(char *str)
 {
@@ -64,4 +64,20 @@ char	*trim_spaces(char *str)
 		j--;
 	new_s = ft_substr(str, i, j + 1 - i);
 	return (new_s);
+}
+
+size_t	skip_blanks(char *line, size_t i)
+{
+	while (line[i] && ft_isset(line[i], SPACE_TAB))
+		i++;
+	return (i);
+}
+
+size_t	skip_rev_blanks(char *line, size_t i)
+{
+	i = ft_strlen(line);
+	if (line[i] && ft_isset(line[i], SPACE_TAB))
+		while (line[i] && ft_isset(line[i], SPACE_TAB))
+			i--;
+	return (i);
 }

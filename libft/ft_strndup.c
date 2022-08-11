@@ -1,53 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_tab.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 21:23:01 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 11:39:49 by lrandria         ###   ########.fr       */
+/*   Created: 2022/08/10 17:31:13 by lrandria          #+#    #+#             */
+/*   Updated: 2022/08/10 17:32:38 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "libft.h"
 
-size_t	get_tab_size(char **tab)
+char	*ft_strndup(char const *s1, size_t n)
 {
 	size_t	i;
+	size_t	len;
+	char	*str;
 
-	if (!tab)
-		return (0);
+	len = ft_strlen(s1);
+	if (len < n)
+		str = malloc(sizeof(char) * (len + 1));
+	else
+		str = malloc(sizeof(char) * (n + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	if (tab[i])
-		while (tab[i])
-			i++;
-	return (i);
-}
-
-void	print_tab(char **tab)
-{
-	size_t	i;
-
-	if (!tab)
-		return ;
-	i = 0;
-	while (tab[i])
+	while (i < n && s1[i])
 	{
-		printf("[%s]\n", tab[i]);
-		i++;
+		str[i] = s1[i];
+		++i;
 	}
-}
-
-void	free_tab(char **tab)
-{
-	size_t	i;
-
-	if (!tab)
-		return ;
-	i = 0;
-	if (tab[i])
-		while (tab[i])
-			free(tab[i++]);
-	free(tab);
+	str[i] = '\0';
+	return (str);
 }

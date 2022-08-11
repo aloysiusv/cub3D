@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_with_sep.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/23 19:43:34 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/10 23:39:35 by lrandria         ###   ########.fr       */
+/*   Created: 2022/08/10 15:47:32 by lrandria          #+#    #+#             */
+/*   Updated: 2022/08/11 12:22:33 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,53 +32,49 @@ static size_t	word_count(char const *s, char sep)
 	nb_of_words = 0;
 	while (s[i])
 	{
-		while (s[i] == sep)
-			i++;
-		if (s[i] != '\0')
+		if (s[i] == sep)
 			nb_of_words++;
-		while (s[i] && s[i] != sep)
-			i++;
+		i++;
 	}
+	if (s[i - 1] != '\n')
+		nb_of_words++;
 	return (nb_of_words);
 }
 
-static char	*word_cpy(char const **s, char sep)
+static int	word_len(char const *s, char sep)
 {
-	char	*word;
-	size_t	i;
+	size_t	len;
 
-	i = 0;
-	while (**s && (*s)[i] == sep)
-		(*s)++;
-	while ((*s)[i] && (*s)[i] != sep)
-		i++;
-	word = (char *)malloc(sizeof(char) * (i + 1));
-	if (word == 0)
-		return (0);
-	ft_strlcpy(word, *s, i + 1);
-	*s = *s + i;
-	return (word);
+	len = 0;
+	while (*s && *s != sep)
+	{
+		len++;
+		s++;
+	}
+	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_with_sep(char const *s, char c)
 {
-	size_t	i;
+	int		i;
 	size_t	size;
+	size_t	w_len;
 	char	**new_arr;
 
-	if (s == 0)
-		return (0);
+	if (s == NULL)
+		return (NULL);
 	size = word_count(s, c);
 	new_arr = (char **)malloc(sizeof(char *) * (size + 1));
-	if (new_arr == 0)
-		return (0);
-	i = 0;
-	while (i < size)
+	if (new_arr == NULL)
+		return (NULL);
+	i = -1;
+	while (++i < (int)size)
 	{
-		new_arr[i] = word_cpy(&s, c);
+		w_len = word_len(s, c);
+		new_arr[i] = ft_strndup(s, w_len);
 		if (new_arr[i] == NULL)
-			return (free_words(new_arr, i));
-		i++;
+			return (free_words(new_arr, i), NULL);
+		s += w_len + 1;
 	}
 	new_arr[i] = NULL;
 	return (new_arr);

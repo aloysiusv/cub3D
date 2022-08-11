@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_free.c                                       :+:      :+:    :+:   */
+/*   exec_hook_exiting.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 23:07:12 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 09:31:00 by lrandria         ###   ########.fr       */
+/*   Created: 2022/08/11 07:44:05 by lrandria          #+#    #+#             */
+/*   Updated: 2022/08/11 17:19:12 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static void	free_textures(t_game *zz)
+static void	free_parsing(t_game *zz)
 {
+	size_t i;
+
+	i = 0;
 	if (zz->no)
 		free(zz->no);
 	if (zz->so)
@@ -22,13 +25,15 @@ static void	free_textures(t_game *zz)
 		free(zz->we);
 	if (zz->ea)
 		free(zz->ea);
+	if (zz->map)
+		while (i++ < zz->ylines)
+			free(zz->map[i]);
+	if (zz->map)
+		free(zz->map);	
 }
 
-void	free_all(t_game *zz)
+static void	free_mlx(t_game *zz)
 {
-	free_textures(zz);
-	free_tab(zz->my_file);
-	free_tab(zz->map);
 	if (zz->data.img)
 		mlx_destroy_image(zz->data.mlx_ptr, zz->data.img);
 	if (zz->texture[0].img)
@@ -43,20 +48,10 @@ void	free_all(t_game *zz)
 		mlx_destroy_window(zz->data.mlx_ptr, zz->data.mlx_win);
 }
 
-void	oops_crash(t_game *zz, char *msg)
+int		exiting(char *str, t_game *zz)
 {
-	if (zz)
-		free_all(zz);
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(msg, 2);
-	exit(1);
-}
-
-void	clean_error_exit(t_game *zz, char *line, int fd, char *error_msg)
-{
-	if (line)
-		free(line);
-	if (fd)
-		close(fd);
-	oops_crash(zz, error_msg);
+	free_parsing(zz);
+	free_mlx(zz);
+	write(1, str, ft_strlen(str));
+	exit(0);
 }

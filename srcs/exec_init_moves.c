@@ -1,53 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_tab.c                                        :+:      :+:    :+:   */
+/*   exec_init_moves.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 21:23:01 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 11:39:49 by lrandria         ###   ########.fr       */
+/*   Created: 2022/08/11 07:46:23 by lrandria          #+#    #+#             */
+/*   Updated: 2022/08/11 08:07:04 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-size_t	get_tab_size(char **tab)
+void	init_moves(t_game *zz)
 {
-	size_t	i;
-
-	if (!tab)
-		return (0);
-	i = 0;
-	if (tab[i])
-		while (tab[i])
-			i++;
-	return (i);
-}
-
-void	print_tab(char **tab)
-{
-	size_t	i;
-
-	if (!tab)
-		return ;
-	i = 0;
-	while (tab[i])
-	{
-		printf("[%s]\n", tab[i]);
-		i++;
-	}
-}
-
-void	free_tab(char **tab)
-{
-	size_t	i;
-
-	if (!tab)
-		return ;
-	i = 0;
-	if (tab[i])
-		while (tab[i])
-			free(tab[i++]);
-	free(tab);
+	zz->data.forward = 0;
+	zz->data.back = 0;
+	zz->data.left = 0;
+	zz->data.right = 0;
+	zz->data.rotate_right = 0;
+	zz->data.rotate_left = 0;
+	zz->ray.posx = (double)zz->dx + 0.5;
+	zz->ray.posy = (double)zz->dy + 0.5;
+	zz->ray.dirx = 0;
+	zz->ray.diry = 0;
+	zz->ray.planx = 0;
+	zz->ray.plany = 0;
 }

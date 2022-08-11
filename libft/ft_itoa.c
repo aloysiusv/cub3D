@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:15:21 by lrandria          #+#    #+#             */
-/*   Updated: 2021/06/09 15:17:10 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/10 23:35:04 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ char	*ft_itoa(int n)
 
 	len = int_len(n);
 	n_ascii = (char *)malloc(sizeof(char) * (len + 1));
-	if (n_ascii == 0)
-		return (0);
+	if (n_ascii == NULL)
+		return (NULL);
 	n_ascii[len] = '\0';
 	nb = n;
 	if (n < 0)

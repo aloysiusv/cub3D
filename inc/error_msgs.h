@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 18:02:53 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/01 22:06:27 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/11 15:55:52 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 
 # define ERROR_NB_ARGS			"invalid number of arguments\n"
 # define ERROR_FILE_FORMAT		"invalid file format or extension\n"
-# define ERROR_FILE_EMPTY		"file: is empty\n"
-# define ERROR_FILE_SIZE		"file: is too large. Not nice! :(\n"
-# define ERROR_FILE_ASCII		"file: contains non-ascii characters\n"
+# define ERROR_FILE_CRASH		"file: unexpected crash\n"
 # define ERROR_FILE_OPEN		"file: can't open file\n"
+# define ERROR_FILE_EMPTY		"file: is empty\n"
+# define ERROR_FILE_ASCII		"file: has non-ascii characters\n"
+# define ERROR_FILE_SIZE		"file: invalid file size\n"
 # define ERROR_MALLOC			"malloc failed\n"
 # define ERROR_MAP_CHAR			"map: invalid char\n"
 # define ERROR_MAP_SHAPE		"map: invalid shape\n"
 # define ERROR_MAP_WALLS		"map: invalid walls\n"
+# define ERROR_MAP_OPEN			"map: is not fully closed\n"
 # define ERROR_MAP_PLAYER		"map: invalid nb of player\n"
 # define ERROR_MAP_SIZE			"map: invalid size\n"
 # define ERROR_INIT_MAP			"init: can't init map\n"
@@ -32,6 +34,9 @@
 # define ERROR_BAD_ID		    "invalid identifier\n"
 # define ERROR_BAD_PATH		    "invalid path\n"
 # define ERROR_BAD_COLOUR	    "invalid colour\n"
+# define ERROR_NON_DIGIT_COLOUR	"colour: contains non-digit characters\n"
+# define ERROR_COLOUR_SIZE		"colour: value is too high or too low\n"
+# define ERROR_COLOUR_COMMA		"colour: invalid formatting\n"
 # define ERROR_NO_PATH		    "missing path\n"
 # define ERROR_NO_COLOUR	    "missing colour\n"
 # define ERROR_DATA_CLONE		"data: can't be set twice\n"
@@ -41,12 +46,9 @@
 #endif
 
 /*
-nb d'args (only 2);
-when reading: check for non printable char, check for fdm, check for massive input;
-check extension;
 check that it's not /dev/null and dev/urandom;
 handle all type of spaces inside the config file; info can be in any order, execpt map
-which is always last; (\n is ok after map);
+	which is always last; (\n is ok after map);
 check if info is repeated;
 check if info is correct or not (MO or SON, instead of SO);
 check that map is not cut in two (no /n/n);

@@ -1,53 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_tab.c                                        :+:      :+:    :+:   */
+/*   exec_init_screen.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 21:23:01 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 11:39:49 by lrandria         ###   ########.fr       */
+/*   Created: 2022/08/11 07:46:40 by lrandria          #+#    #+#             */
+/*   Updated: 2022/08/11 08:07:04 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-size_t	get_tab_size(char **tab)
+void	init_screen(t_game *zz)
 {
-	size_t	i;
-
-	if (!tab)
-		return (0);
-	i = 0;
-	if (tab[i])
-		while (tab[i])
-			i++;
-	return (i);
-}
-
-void	print_tab(char **tab)
-{
-	size_t	i;
-
-	if (!tab)
-		return ;
-	i = 0;
-	while (tab[i])
-	{
-		printf("[%s]\n", tab[i]);
-		i++;
-	}
-}
-
-void	free_tab(char **tab)
-{
-	size_t	i;
-
-	if (!tab)
-		return ;
-	i = 0;
-	if (tab[i])
-		while (tab[i])
-			free(tab[i++]);
-	free(tab);
+	mlx_get_screen_size(zz->data.mlx_ptr, &zz->screenx, &zz->screeny);
+	if (zz->rx > zz->screenx)
+		zz->rx = zz->screenx;
+	if (zz->ry > zz->screeny)
+		zz->ry = zz->screeny;
 }
