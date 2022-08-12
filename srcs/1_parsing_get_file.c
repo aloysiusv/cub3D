@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_check_file.c                               :+:      :+:    :+:   */
+/*   1_parsing_get_file.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 04:01:10 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 08:07:04 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 06:17:37 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool	check_if_ascii(char *line)
 	return (true);;
 }
 
-void	check_file(t_game *zz)
+void	get_file(t_game *zz)
 {
 	int		fd;
 	int		ret;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_launch_game.c                              :+:      :+:    :+:   */
+/*   8_launch_game.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 22:37:48 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 08:07:04 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 06:31:37 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	init_mlx(t_game *zz)
 	init_moves(zz);	
 	init_pov(zz);
 	zz->data.mlx_ptr = mlx_init();
-	if (!zz->data.mlx_ptr)
-		exiting("error: cant initiate mlx\n", zz);
+	if (zz->data.mlx_ptr == NULL)
+		oops_crash(zz, ERROR_INIT_MLX);
 	init_screen(zz);
 	init_textures(zz);
 	init_images(zz);
@@ -27,7 +27,8 @@ static void	init_mlx(t_game *zz)
 static void	executing_mlx(t_game *zz)
 {
 	zz->data.mlx_win = mlx_new_window(zz->data.mlx_ptr, zz->rx,
-			zz->ry, "Losange4D");
+		zz->ry, "Losange4D");
+	if (zz->data.mlx_win == NULL)
 	mlx_hook(zz->data.mlx_win, 33, 1L << 17, exiting, zz);
 	mlx_hook(zz->data.mlx_win, 2, 1L << 0, keying, zz);
 	mlx_loop_hook(zz->data.mlx_ptr, raycasting, zz);

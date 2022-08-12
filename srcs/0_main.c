@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   0_main.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:24:20 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 12:23:00 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 06:33:48 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,16 @@ static void	init(char **argv, t_game *zz)
 	zz->my_file = NULL;
 	zz->ground_color = -1;
 	zz->sky_color = -1;
+	zz->rx = 21471636;
+	zz->rx = 21471636;
 }
 
 static void	parsing(char **argv, t_game *zz)
 {	
 	init(argv, zz);
-	check_file(zz);
+	get_file(zz);
 	check_info(zz);
-	lili_check_map(zz);
+	check_map(zz);
 	printf("====================================\n");
 	printing_parsing(zz);
 	printf("====================================\n");

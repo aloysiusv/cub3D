@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_get_map.c                                  :+:      :+:    :+:   */
+/*   5_parsing_get_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 08:25:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 11:57:52 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 06:12:00 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+static void	check_valid_map_size(t_game *zz)
+{
+	if (get_tab_size(zz->map) < 3)
+		oops_crash(zz, ERROR_MAP_SIZE);
+}
 
 static size_t	skip_blank_lines(char **my_file, size_t	i)
 {
@@ -44,4 +50,5 @@ void	get_map(t_game *zz, size_t i)
 	if (!zz->map)
 		oops_crash(zz, ERROR_DATA_MISSING);
 	zz->map[j] = NULL;
+	check_valid_map_size(zz);
 }

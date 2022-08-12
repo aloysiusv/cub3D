@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:49:04 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 08:07:04 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 05:12:32 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void	init_ray(t_game *zz)
 	zz->ray.hit = 0;
 	zz->ray.perpwalldist = 0;
 	zz->ray.camerax = 2 * zz->ray.x / (double)zz->rx - 1;
-	zz->ray.raydirx = zz->ray.dirx + zz->ray.planx * \
-						zz->ray.camerax;
-	zz->ray.raydiry = zz->ray.diry + zz->ray.plany * \
-						zz->ray.camerax;
+	zz->ray.raydirx = zz->ray.dirx + zz->ray.planx * zz->ray.camerax;
+	zz->ray.raydiry = zz->ray.diry + zz->ray.plany * zz->ray.camerax;
 	zz->ray.mapx = (int)zz->ray.posx;
 	zz->ray.mapy = (int)zz->ray.posy;
 	zz->ray.movespeed = 0.1;
@@ -52,25 +50,23 @@ void	init_sidedist(t_game *zz)
 	if (zz->ray.raydirx < 0)
 	{
 		zz->ray.stepx = -1;
-		zz->ray.sidedistx = (zz->ray.posx - zz->ray.mapx) \
-							* zz->ray.deltadistx;
+		zz->ray.sidedistx = (zz->ray.posx - zz->ray.mapx) * zz->ray.deltadistx;
 	}
 	else
 	{
 		zz->ray.stepx = 1;
-		zz->ray.sidedistx = (zz->ray.mapx + 1.0 - zz->ray.posx) \
-							* zz->ray.deltadistx;
+		zz->ray.sidedistx =
+			(zz->ray.mapx + 1.0 - zz->ray.posx) * zz->ray.deltadistx;
 	}
 	if (zz->ray.raydiry < 0)
 	{
 		zz->ray.stepy = -1;
-		zz->ray.sidedisty = (zz->ray.posy - zz->ray.mapy) \
-							* zz->ray.deltadisty;
+		zz->ray.sidedisty = (zz->ray.posy - zz->ray.mapy) * zz->ray.deltadisty;
 	}
 	else
 	{
 		zz->ray.stepy = 1;
-		zz->ray.sidedisty = (zz->ray.mapy + 1.0 - zz->ray.posy) \
-							* zz->ray.deltadisty;
+		zz->ray.sidedisty =
+			(zz->ray.mapy + 1.0 - zz->ray.posy) * zz->ray.deltadisty;
 	}
 }

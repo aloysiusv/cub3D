@@ -6,31 +6,11 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 17:14:10 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 17:25:32 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 02:12:04 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-bool	is_only_blanks(char *str)
-{
-	size_t	i;
-	size_t	count;
-
-	i = 0;
-	count = 0;
-	if (!str)
-		return (true);
-	while (str && str[i])
-	{
-		if (ft_isset(str[i], ALL_SPACES) == 1)
-			count++;
-		i++;
-	}
-	if (count == i)
-		return (true);
-	return (false);
-}
 
 size_t	count_chars(char *str, char c)
 {
@@ -50,34 +30,24 @@ size_t	count_chars(char *str, char c)
 	return (count);
 }
 
-char	*trim_spaces(char *str)
+char	*replace_word(char *word, char fill)
 {
-	char	*new_s;
-	size_t	i;
-	size_t	j;
+	size_t			i;
+	char			*new_word;
+	const size_t	len = ft_strlen(word);
 
+	new_word = (char *)malloc(sizeof(char) * (len + 2));
+	if (new_word == NULL)
+		return (NULL);
 	i = 0;
-	while (str[i] && ft_isset(str[i], ALL_SPACES) == 1)
+	new_word[i] = fill;
+	i = 1;
+	while (i < len)
+	{
+		new_word[i] = word[i];
 		i++;
-	j = ft_strlen(str) - 1;
-	while (ft_isset(str[j], ALL_SPACES) == 1)
-		j--;
-	new_s = ft_substr(str, i, j + 1 - i);
-	return (new_s);
-}
-
-size_t	skip_blanks(char *line, size_t i)
-{
-	while (line[i] && ft_isset(line[i], SPACE_TAB))
-		i++;
-	return (i);
-}
-
-size_t	skip_rev_blanks(char *line, size_t i)
-{
-	i = ft_strlen(line);
-	if (line[i] && ft_isset(line[i], SPACE_TAB))
-		while (line[i] && ft_isset(line[i], SPACE_TAB))
-			i--;
-	return (i);
+	}
+	new_word[i] = fill;
+	new_word[i + 1] = '\0';
+ 	return (new_word);
 }

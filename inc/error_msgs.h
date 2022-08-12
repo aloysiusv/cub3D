@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 18:02:53 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 15:55:52 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 06:29:22 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@
 # define ERROR_MALLOC			"malloc failed\n"
 # define ERROR_MAP_CHAR			"map: invalid char\n"
 # define ERROR_MAP_SHAPE		"map: invalid shape\n"
-# define ERROR_MAP_WALLS		"map: invalid walls\n"
+# define ERROR_MAP_EDGES		"map: missing '1' on the edges\n"
 # define ERROR_MAP_OPEN			"map: is not fully closed\n"
 # define ERROR_MAP_PLAYER		"map: invalid nb of player\n"
 # define ERROR_MAP_SIZE			"map: invalid size\n"
 # define ERROR_INIT_MAP			"init: can't init map\n"
 # define ERROR_INIT_MLX			"init: can't init mlx\n"
 # define ERROR_INIT_IMG			"init: can't init img\n"
+# define ERROR_INIT_IMG_ADD		"init: can't init img address\n"
 # define ERROR_INIT_COLOUR		"init: can't init colour\n"
 # define ERROR_BAD_ID		    "invalid identifier\n"
 # define ERROR_BAD_PATH		    "invalid path\n"
