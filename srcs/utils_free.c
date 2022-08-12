@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:07:12 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:43:09 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:18:10 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_all(t_game *zz)
 		mlx_destroy_window(zz->data.mlx_ptr, zz->data.mlx_win);
 }
 
-void 	good_exit(t_game *zz, char *str)
+void	good_exit(t_game *zz, char *str)
 {
 	if (zz)
 		free_all(zz);

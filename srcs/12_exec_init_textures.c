@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_init_textures.c                               :+:      :+:    :+:   */
+/*   12_exec_init_textures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:46:52 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 05:10:40 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:25:37 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ static void	get_adress_texture(t_game *zz)
 static void	get_textures(t_game *zz)
 {
 	zz->texture[0].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
-		zz->no, &(zz->texture[0].width), &(zz->texture[0].height));
+			zz->no, &(zz->texture[0].width), &(zz->texture[0].height));
 	if (zz->texture[0].img == NULL)
 		oops_crash(zz, ERROR_INIT_IMG);
 	zz->texture[1].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
-		zz->so, &(zz->texture[1].width), &(zz->texture[1].height));
+			zz->so, &(zz->texture[1].width), &(zz->texture[1].height));
 	if (zz->texture[1].img == NULL)
 		oops_crash(zz, ERROR_INIT_IMG);
 	zz->texture[2].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
-		zz->ea, &(zz->texture[2].width), &(zz->texture[2].height));
+			zz->ea, &(zz->texture[2].width), &(zz->texture[2].height));
 	if (zz->texture[2].img == NULL)
 		oops_crash(zz, ERROR_INIT_IMG);
 	zz->texture[3].img = mlx_xpm_file_to_image(zz->data.mlx_ptr,
-		zz->we, &(zz->texture[3].width), &(zz->texture[3].height));
+			zz->we, &(zz->texture[3].width), &(zz->texture[3].height));
 	if (zz->texture[3].img == NULL)
 		oops_crash(zz, ERROR_INIT_IMG);
 	get_adress_texture(zz);

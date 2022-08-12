@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 08:25:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:12:00 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:40:24 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	check_valid_map_size(t_game *zz)
 
 static size_t	skip_blank_lines(char **my_file, size_t	i)
 {
+	if (!my_file || !*my_file[i])
+		return (i);
 	while (is_only_blanks(my_file[i]) == true)
 		i++;
 	return (i);

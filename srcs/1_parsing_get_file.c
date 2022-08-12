@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 04:01:10 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:17:37 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:25:48 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static bool	check_if_ascii(char *line)
 			return (false);
 		i++;
 	}
-	return (true);;
+	return (true);
 }
 
 void	get_file(t_game *zz)

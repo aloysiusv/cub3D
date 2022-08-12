@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:24:20 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:33:48 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:27:29 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static bool	check_args(int argc, char **argv)
 {
 	if (argc != 2)
-		return(ft_putstr_fd(ERROR_NB_ARGS, 2), false);
+		return (ft_putstr_fd(ERROR_NB_ARGS, 2), false);
 	if (ft_strlen(argv[1]) < 5)
-		return(ft_putstr_fd(ERROR_FILE_FORMAT, 2), false);
+		return (ft_putstr_fd(ERROR_FILE_FORMAT, 2), false);
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".cub", 5) != 0)
-		return(ft_putstr_fd(ERROR_FILE_FORMAT, 2), false);
+		return (ft_putstr_fd(ERROR_FILE_FORMAT, 2), false);
 	return (true);
 }
 
@@ -36,8 +36,8 @@ static void	init(char **argv, t_game *zz)
 	zz->my_file = NULL;
 	zz->ground_color = -1;
 	zz->sky_color = -1;
-	zz->rx = 21471636;
-	zz->rx = 21471636;
+	zz->rx = 21471;
+	zz->ry = 21471;
 }
 
 static void	parsing(char **argv, t_game *zz)
@@ -51,7 +51,7 @@ static void	parsing(char **argv, t_game *zz)
 	printf("====================================\n");
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	zz;
 

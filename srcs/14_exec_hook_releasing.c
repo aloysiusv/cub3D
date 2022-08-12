@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 06:45:28 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:45:31 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:17:48 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int		releasing(int keycode, t_game *zz)
+int	releasing(int keycode, t_game *zz)
 {
 	if (keycode == FORWARD_W_Z)
 		zz->data.forward = 0;

@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:44:05 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:42:13 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:22:25 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	free_parsing(t_game *zz)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (zz->no)
@@ -29,7 +29,7 @@ static void	free_parsing(t_game *zz)
 		while (i++ < zz->ylines)
 			free(zz->map[i]);
 	if (zz->map)
-		free(zz->map);	
+		free(zz->map);
 }
 
 static void	free_mlx(t_game *zz)
@@ -48,7 +48,7 @@ static void	free_mlx(t_game *zz)
 		mlx_destroy_window(zz->data.mlx_ptr, zz->data.mlx_win);
 }
 
-int		exiting(char *str, t_game *zz)
+int	exiting(char *str, t_game *zz)
 {
 	free_parsing(zz);
 	free_mlx(zz);

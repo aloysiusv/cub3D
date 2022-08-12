@@ -6,11 +6,34 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 06:19:23 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 07:23:56 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:26:27 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+static bool	get_down_char(t_game *zz, char *down_char, size_t i, size_t j)
+{
+	if (i == get_tab_size(zz->map) - 1)
+		return (false);
+	else
+	{
+		if (j < ft_strlen(zz->map[i + 1]))
+			*down_char = zz->map[i + 1][j];
+		else
+			return (false);
+	}
+	return (true);
+}
+
+static bool	get_up_char(t_game *zz, char *up_char, size_t i, size_t j)
+{
+	if (j < ft_strlen(zz->map[i - 1]))
+		*up_char = zz->map[i - 1][j];
+	else
+		return (false);
+	return (true);
+}
 
 static void	check_inside(t_game *zz, size_t i, size_t j)
 {
@@ -19,45 +42,20 @@ static void	check_inside(t_game *zz, size_t i, size_t j)
 	char		up_char;
 	char		down_char;
 
-	if (j < ft_strlen(zz->map[i - 1]))
-		up_char = zz->map[i - 1][j];
-	else
-		return ;
-	if (i == get_tab_size(zz->map) - 1)
-		return ;
-	else
-	{
-		if (j < ft_strlen(zz->map[i + 1]))
-			down_char = zz->map[i + 1][j];
-		else 
-			return ;
-	}
 	if (zz->map[i][j] == '0' && j != ft_strlen(zz->map[i]) - 1)
 	{
 		if (!prev_char || ft_isset(prev_char, SPACE_TAB))
 			oops_crash(zz, ERROR_MAP_OPEN);
 		if (!next_char || ft_isset(next_char, SPACE_TAB))
 			oops_crash(zz, ERROR_MAP_OPEN);
-		if (!up_char || ft_isset(up_char, SPACE_TAB))
-			oops_crash(zz, ERROR_MAP_OPEN);
-		if (!down_char || ft_isset(down_char, SPACE_TAB))
-			oops_crash(zz, ERROR_MAP_OPEN);
+		if (get_up_char(zz, &up_char, i, j) == true)
+			if (!up_char || ft_isset(up_char, SPACE_TAB))
+				oops_crash(zz, ERROR_MAP_OPEN);
+		if (get_down_char(zz, &down_char, i, j) == true)
+			if (!down_char || ft_isset(down_char, SPACE_TAB))
+				oops_crash(zz, ERROR_MAP_OPEN);
 	}
 }
-
-// if (j < ft_strlen(zz->map[i - 1]))
-// 		up_char = zz->map[i - 1][j];
-// 	else 
-// 		return ;
-// 	if (i == get_tab_size(zz->map) - 1)
-// 		return ;
-// 	else
-// 	{
-// 		if (j < ft_strlen(zz->map[i + 1]))
-// 			down_char = zz->map[i + 1][j];
-// 		else 
-// 			return ;
-// 	}
 
 static void	check_outside(t_game *zz, size_t i, size_t j)
 {
@@ -98,11 +96,10 @@ void	check_walls(t_game *zz)
 		}
 	}
 	i = 1;
-	while (zz->map[i])
+	while (zz->map[i] && i < get_tab_size(zz->map) - 1)
 	{
 		j = 1;
-		printf("line = [%s]\n", zz->map[i]);
-		while (zz->map[i][j])
+		while (zz->map[i][j] && j < ft_strlen(zz->map[i]) - 1)
 		{
 			check_inside(zz, i, j);
 			j++;
