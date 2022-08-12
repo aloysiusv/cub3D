@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 08:25:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 15:40:24 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:33:38 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	get_map(t_game *zz, size_t i)
 	zz->map = (char **)ft_calloc(size - i + 1, sizeof(char *));
 	if (zz->map == NULL)
 		oops_crash(zz, ERROR_MALLOC);
-	i = skip_blank_lines(zz->my_file, i);
+	i = skip_blank_lines(zz->my_file, i) + 1;
 	j = 0;
 	while (zz->my_file[i])
 	{

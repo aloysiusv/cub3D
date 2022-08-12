@@ -6,11 +6,20 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 04:53:39 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 16:20:44 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:36:47 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+static bool	gathered_everything(t_game *zz)
+{
+	if (zz->no && zz->so && zz->we && zz->ea && zz->so
+		&& zz->ground_color != -1 && zz->sky_color != -1
+		&& zz->depart && zz->dx && zz->dy)
+		return (true);
+	return (false);
+}
 
 static void	get_player(t_game *zz, size_t i, size_t j)
 {
@@ -49,4 +58,6 @@ void	check_map(t_game *zz)
 		}
 		i++;
 	}
+	if (gathered_everything(zz) == false)
+		oops_crash(zz, ERROR_DATA_MISSING);
 }

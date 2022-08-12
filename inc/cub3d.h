@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by ebourdit          #+#    #+#             */
-/*   Updated: 2022/08/12 06:44:21 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:03:48 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,36 +161,36 @@ void		launch_game(t_game *zz);
 //                                Executing                                  //
 // ========================================================================= //
 
-
+/* exec_hook */
 int			exiting(char *str, t_game *zz);
-//exec/hooking/keying.c
 int			keying(int keycode, t_game *zz);
-//exec/hooking/releasing.c
 int			releasing(int keycode, t_game *zz);
-//exec/init/images.c
+
+/* exec_init */
 void		init_images(t_game *zz);
-//exec/init/moves.c
 void		init_moves(t_game *zz);
-//exec/init/pov.c
 void		init_pov(t_game *zz);
-//exec/init/screen.c
 void		init_screen(t_game *zz);
-//exec/init/textures.c
 void		init_textures(t_game *zz);
-//exec/raycasting/init_ray.c
+
+/* exec_raycast_init */
 void		init_ray(t_game *zz);
 void		init_deltadist(t_game *zz);
 void		init_sidedist(t_game *zz);
-//exec/raycasting/moving.c
+
+/* exec_raycast_moves */
 void		moving_front_back(t_game *zz);
 void		moving_left_right(t_game *zz);
 void		rotating_left_right(t_game *zz);
-//exec/raycasting/processing_ray.c
+
+/* exec_raycast_processing ray */
 void		incrementing(t_game *zz);
 void		calculating(t_game *zz);
-//exec/raycasting/raycasting.c
+
+/* exec_raycast_raycasting */
 int			raycasting(t_game *zz);
-//exec/raycasting/texturing_scene.c
+
+/* exec_raycast_texture */
 void		texturing_scene(t_game *zz);
 
 // ========================================================================= //

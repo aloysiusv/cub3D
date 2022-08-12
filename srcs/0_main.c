@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:24:20 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 16:27:29 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:38:31 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ static void	parsing(char **argv, t_game *zz)
 	get_file(zz);
 	check_info(zz);
 	check_map(zz);
-	printf("====================================\n");
-	printing_parsing(zz);
-	printf("====================================\n");
+	// printf("====================================\n");
+	// printing_parsing(zz);
+	// printf("====================================\n");
 }
 
 int	main(int argc, char **argv)
@@ -58,8 +58,7 @@ int	main(int argc, char **argv)
 	if (check_args(argc, argv) == false)
 		return (1);
 	parsing(argv, &zz);
-	// printing_parsing(&zz);
-	// launch_game(&zz);
+	launch_game(&zz);
 	free_all(&zz);
 	return (0);
 }

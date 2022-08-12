@@ -8,13 +8,25 @@ execMandatory() {
 	echo $VALGRIND ./cub3d maps/tests/$1
 	$VALGRIND ./cub3d maps/tests/$1
 	echo $SEP
-	sleep 3
+	sleep 1
 }
 
 make
 
-# execMandatory map.cbu
-# execMandatory emptymap.cub
+execMandatory good_itachi.cub
+execMandatory map.cbu
+execMandatory emptymap.cub
+execMandatory bad_commas2.cub
+execMandatory bad_commas.cub
+execMandatory bad_small_map2.cub
+execMandatory bad_small_map.cub
+execMandatory bad_texture_path1.cub
+execMandatory bad_texture_path2.cub
+execMandatory map_inspace2.cub
+execMandatory map_inspace3.cub
+execMandatory map_inspace4.cub
+execMandatory map_inspace5.cub
+execMandatory map_inspace.cub
 execMandatory closed.cub
 execMandatory emptymap.cub
 execMandatory errormap.cub
