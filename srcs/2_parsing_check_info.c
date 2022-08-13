@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 19:17:44 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/14 00:56:15 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/14 01:15:44 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	check_nonsense_line(t_game *zz, char *line)
 
 	i = 0;
 	i = skip_blanks(line, i);
-	if (ft_strncmp(line + i, "NO", 2) || ft_strncmp(line + i, "SO", 2)
-	|| ft_strncmp(line + i, "EA", 2) || ft_strncmp(line + i, "WE", 2)
-	|| ft_strncmp(line + i, "F", 1) || ft_strncmp(line + i, "C", 1))
+	if (ft_strncmp(line + i, "NO", 2) && ft_strncmp(line + i, "SO", 2)
+	&& ft_strncmp(line + i, "EA", 2) && ft_strncmp(line + i, "WE", 2)
+	&& ft_strncmp(line + i, "F", 1) && ft_strncmp(line + i, "C", 1))
 		oops_crash(zz, ERROR_DATA_INVALID);
 }
 
