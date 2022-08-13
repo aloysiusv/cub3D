@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   0_main.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsartral <nsartral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:24:20 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 21:05:49 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:31:36 by nsartral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	init(char **argv, t_game *zz)
 	zz->my_file = NULL;
 	zz->ground_color = -1;
 	zz->sky_color = -1;
-	zz->rx = 2575;
+	zz->rx = 2565;
 	zz->ry = 2048;
 }
 
