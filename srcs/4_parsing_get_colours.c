@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 22:20:02 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/14 01:31:05 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/14 01:35:02 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ void	get_colours(t_game *zz, char *line)
 	{
 		if (zz->ground_color != -1)
 			oops_crash(zz, ERROR_DATA_CLONE);
-		stock_colours(zz, line);
+		stock_colours(zz, line + i);
 		zz->ground_color = convert_rgb(0, zz->rgb[0], zz->rgb[1], zz->rgb[2]);
 	}
 	else if (ft_strncmp(line + i, "C", 1) == 0)
 	{
 		if (zz->sky_color != -1)
 			oops_crash(zz, ERROR_DATA_CLONE);
-		stock_colours(zz, line);
+		stock_colours(zz, line + i);
 		zz->sky_color = convert_rgb(0, zz->rgb[0], zz->rgb[1], zz->rgb[2]);
 	}
 }
