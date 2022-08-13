@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 08:25:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 17:27:28 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 19:03:20 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	init_xylines(t_game *zz)
 
 static size_t	skip_blank_lines(char **my_file, size_t	i)
 {
-	if (!my_file || !*my_file[i])
-		return (i);
 	while (is_only_blanks(my_file[i]) == true)
 		i++;
 	return (i);
@@ -41,7 +39,7 @@ void	get_map(t_game *zz, size_t i)
 	zz->map = (char **)ft_calloc(size - i + 1, sizeof(char *));
 	if (zz->map == NULL)
 		oops_crash(zz, ERROR_MALLOC);
-	i = skip_blank_lines(zz->my_file, i) + 1;
+	i = skip_blank_lines(zz->my_file, i);
 	j = 0;
 	while (zz->my_file[i])
 	{

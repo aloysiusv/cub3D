@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 04:53:39 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 17:38:41 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 19:37:01 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ static void	get_player(t_game *zz, size_t i, size_t j)
 		zz->depart = 'E';
 	zz->dx = i;
 	zz->dy = j;
-	// been switched for segfault
-	// zz->dx = j; 
-	// zz->dy = i;
+	zz->map[i][j] = '0';
 }
 
 void	check_map(t_game *zz)
