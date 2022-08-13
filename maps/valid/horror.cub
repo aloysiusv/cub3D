@@ -1,8 +1,8 @@
 
-NO ./textures/akatsuki.xpm
-SO ./textures/gaara.xpm
-EA ./textures/uchiwa.xpm
-WE ./textures/uzumaki.xpm
+NO ./textures/Chucky.xpm
+SO ./textures/Scoobie.xpm
+EA ./textures/Saw.xpm
+WE ./textures/Scream.xpm
 
 F 0  , 255 , 0
 C 0 , 0 , 200

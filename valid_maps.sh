@@ -15,7 +15,7 @@ make
 
 execValid itachi.cub
 execValid horror.cub
-execValid map2.cub
-execValid map3.cub
+execValid mario.cub
+execValid horror2.cub
 execValid maze.cub
 execValid wolfenstein.cub

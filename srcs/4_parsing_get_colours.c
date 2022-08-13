@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_parsing_get_colours.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsartral <nsartral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 22:20:02 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 02:23:27 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 23:42:16 by nsartral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	get_colours(t_game *zz, char *line)
 	zz->rgb[1] = 0;
 	zz->rgb[2] = 0;
 	i = skip_blanks(line, i);
-	if (line[i] == 'F' && line[i + 1])
+	if (ft_strncmp(line, "F", 1) == 0)
 	{
 		if (zz->ground_color != -1)
 			oops_crash(zz, ERROR_DATA_CLONE);
@@ -62,7 +62,7 @@ void	get_colours(t_game *zz, char *line)
 		stock_colours(zz, line);
 		zz->ground_color = convert_rgb(0, zz->rgb[0], zz->rgb[1], zz->rgb[2]);
 	}
-	else if (line[i] == 'C' && line[i + 1])
+	else if (ft_strncmp(line, "C", 1) == 0)
 	{
 		if (zz->sky_color != -1)
 			oops_crash(zz, ERROR_DATA_CLONE);

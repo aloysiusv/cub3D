@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
+#    By: nsartral <nsartral@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 21:00:01 by lrandria          #+#    #+#              #
-#    Updated: 2022/08/13 22:01:16 by lrandria         ###   ########.fr        #
+#    Updated: 2022/08/14 00:02:17 by nsartral         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS		=	0_main.c 							\
 				5_parsing_get_map.c					\
 				6_parsing_check_map.c 				\
 				7_parsing_check_walls.c 			\
+				7_parsing_check_walls_bis.c			\
 				8_launch_game.c 					\
 				9_exec_init_moves.c 				\
 				10_exec_init_pov.c 					\

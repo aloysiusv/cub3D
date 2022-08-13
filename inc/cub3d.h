@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsartral <nsartral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by ebourdit          #+#    #+#             */
-/*   Updated: 2022/08/13 21:52:30 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:00:51 by nsartral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,8 @@ void		get_map(t_game *zz, size_t i);
 void		check_map(t_game *zz);
 /* check_walls.c */
 void		check_walls(t_game *zz);
+/* check_walls_bis.c */
+void		check_special_case(t_game *zz);
 /* launch_game.c */
 void		launch_game(t_game *zz);
 

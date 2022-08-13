@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   7_parsing_check_walls.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsartral <nsartral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 06:19:23 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 19:02:28 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 23:58:05 by nsartral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	check_inside(t_game *zz, size_t i, size_t j)
 			if (!down_char || ft_isset(down_char, SPACE_TAB))
 				oops_crash(zz, ERROR_MAP_OPEN);
 	}
+	check_special_case(zz);
 }
 
 static void	check_outside(t_game *zz, size_t i, size_t j)
