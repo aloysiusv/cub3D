@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:24:20 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 23:38:31 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 03:11:16 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ static bool	check_args(int argc, char **argv)
 static void	init(char **argv, t_game *zz)
 {
 	ft_memset(zz, 0, sizeof(t_game));
-	ft_memset(zz->texture, 0, sizeof(t_data) * 4);
+	ft_memset(zz->texture, 0, sizeof(t_data));
 	zz->map_name = argv[1];
-	zz->no = NULL;
-	zz->so = NULL;
-	zz->ea = NULL;
-	zz->we = NULL;
+	zz->no = 0;
+	zz->so = 0;
+	zz->ea = 0;
+	zz->we = 0;
 	zz->map = NULL;
 	zz->my_file = NULL;
 	zz->ground_color = -1;
 	zz->sky_color = -1;
-	zz->rx = 21471;
-	zz->ry = 21471;
+	zz->rx = 2048;
+	zz->ry = 2048;
 }
 
 static void	parsing(char **argv, t_game *zz)

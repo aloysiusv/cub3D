@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 19:17:44 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 23:35:12 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 02:22:46 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ void	check_info(t_game *zz)
 {
 	size_t	i;
 	size_t	tab_len;
+	size_t	last_valid_line;
 
 	tab_len = get_tab_size(zz->my_file);
+	last_valid_line = tab_len - 3;
 	i = 0;
 	while (zz->my_file[i])
 	{
 		get_paths(zz, zz->my_file[i]);
 		get_colours(zz, zz->my_file[i]);
-		if (gathered_settings(zz) == false && i == tab_len - 3)
+		if (gathered_settings(zz) == false && i == last_valid_line)
 			oops_crash(zz, ERROR_DATA_INVALID);
 		else if (gathered_settings(zz) == true)
 		{

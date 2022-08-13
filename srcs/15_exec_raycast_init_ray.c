@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_raycast_init_ray.c                            :+:      :+:    :+:   */
+/*   15_exec_raycast_init_ray.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:49:04 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 05:12:32 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 00:35:54 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void	init_deltadist(t_game *zz)
 		zz->ray.deltadistx = 1;
 	else
 		zz->ray.deltadistx = sqrt(1 + (zz->ray.raydiry
-			* zz->ray.raydiry) / (zz->ray.raydirx *
-			zz->ray.raydirx));
+			* zz->ray.raydiry) / (zz->ray.raydirx
+			* zz->ray.raydirx));
 	if (zz->ray.raydirx == 0)
 		zz->ray.deltadisty = 0;
 	else if (zz->ray.raydiry == 0)
 		zz->ray.deltadisty = 1;
 	else
-		zz->ray.deltadisty = sqrt(1 + (zz->ray.raydirx *
-			zz->ray.raydirx) / (zz->ray.raydiry *
-			zz->ray.raydiry));	
+		zz->ray.deltadisty = sqrt(1 + (zz->ray.raydirx
+			* zz->ray.raydirx) / (zz->ray.raydiry
+			* zz->ray.raydiry));	
 }
 
 void	init_sidedist(t_game *zz)

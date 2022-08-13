@@ -6,13 +6,13 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:46:52 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 16:25:37 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 03:18:11 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static void	get_adress_texture(t_game *zz)
+static void	get_address_texture(t_game *zz)
 {
 	zz->texture[0].addr = (int *)mlx_get_data_addr(zz->texture[0].img,
 			&zz->texture[0].bits_per_pixel,
@@ -54,11 +54,11 @@ static void	get_textures(t_game *zz)
 			zz->we, &(zz->texture[3].width), &(zz->texture[3].height));
 	if (zz->texture[3].img == NULL)
 		oops_crash(zz, ERROR_INIT_IMG);
-	get_adress_texture(zz);
+	get_address_texture(zz);
 }
 
 void	init_textures(t_game *zz)
 {
 	get_textures(zz);
-	get_adress_texture(zz);
+	get_address_texture(zz);
 }

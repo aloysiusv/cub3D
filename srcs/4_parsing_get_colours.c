@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 22:20:02 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:17:53 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 02:23:27 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	stock_colours(t_game *zz, char *line)
 		i = skip_blanks(line, i);
 		if (j < 2 && line[i] != ',')
 			oops_crash(zz, ERROR_COLOUR_COMMA);
-		if (j < 2 && line[i] == ',')
+		else if (j < 2 && line[i] == ',')
 			i++;
 		i = skip_blanks(line, i);
 		j++;
