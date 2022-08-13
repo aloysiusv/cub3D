@@ -6,11 +6,23 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 19:17:44 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 16:15:15 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:56:15 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+static void	check_nonsense_line(t_game *zz, char *line)
+{
+	size_t	i;
+
+	i = 0;
+	i = skip_blanks(line, i);
+	if (ft_strncmp(line + i, "NO", 2) || ft_strncmp(line + i, "SO", 2)
+	|| ft_strncmp(line + i, "EA", 2) || ft_strncmp(line + i, "WE", 2)
+	|| ft_strncmp(line + i, "F", 1) || ft_strncmp(line + i, "C", 1))
+		oops_crash(zz, ERROR_DATA_INVALID);
+}
 
 static bool	gathered_settings(t_game *zz)
 {
@@ -31,6 +43,8 @@ void	check_info(t_game *zz)
 	i = 0;
 	while (zz->my_file[i])
 	{
+		i = skip_blank_lines(zz->my_file, i);
+		check_nonsense_line(zz, zz->my_file[i]);
 		get_paths(zz, zz->my_file[i]);
 		get_colours(zz, zz->my_file[i]);
 		if (gathered_settings(zz) == false && i == last_valid_line)

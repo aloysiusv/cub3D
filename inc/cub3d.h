@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsartral <nsartral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by ebourdit          #+#    #+#             */
-/*   Updated: 2022/08/14 00:00:51 by nsartral         ###   ########.fr       */
+/*   Updated: 2022/08/14 01:01:16 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,7 @@ void		clean_error_exit(t_game *zz, char *line, int fd, char *error_msg);
 char		*trim_spaces(char *str);
 bool		is_only_blanks(char *str);
 size_t		count_chars(char *str, char c);
+size_t		skip_blank_lines(char **my_file, size_t	i);
 size_t		skip_blanks(char *line, size_t i);
 size_t		skip_rev_blanks(char *line, size_t i);
 

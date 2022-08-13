@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 01:53:37 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 02:24:54 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/14 01:01:58 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ char	*trim_spaces(char *str)
 		j--;
 	new_s = ft_substr(str, i, j + 1 - i);
 	return (new_s);
+}
+
+size_t	skip_blank_lines(char **my_file, size_t	i)
+{
+	while (is_only_blanks(my_file[i]) == true)
+		i++;
+	return (i);
 }
 
 size_t	skip_blanks(char *line, size_t i)
