@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 22:16:38 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:17:46 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/14 01:29:59 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,16 @@ static void	stock_path(t_game *zz, char *line, char **zz_path, char *dir)
 
 void	get_paths(t_game *zz, char *line)
 {
-	if (ft_strncmp(line, "NO", 2) == 0)
-		stock_path(zz, line, &zz->no, "NO");
-	else if (ft_strncmp(line, "SO", 2) == 0)
-		stock_path(zz, line, &zz->so, "SO");
-	else if (ft_strncmp(line, "EA", 2) == 0)
-		stock_path(zz, line, &zz->ea, "EA");
-	else if (ft_strncmp(line, "WE", 2) == 0)
-		stock_path(zz, line, &zz->we, "WE");
+	size_t	i;
+
+	i = 0;
+	i = skip_blanks(line, i);
+	if (ft_strncmp(line + i, "NO", 2) == 0)
+		stock_path(zz, line + i, &zz->no, "NO");
+	else if (ft_strncmp(line + i, "SO", 2) == 0)
+		stock_path(zz, line + i, &zz->so, "SO");
+	else if (ft_strncmp(line + i, "EA", 2) == 0)
+		stock_path(zz, line + i, &zz->ea, "EA");
+	else if (ft_strncmp(line + i, "WE", 2) == 0)
+		stock_path(zz, line + i, &zz->we, "WE");
 }
