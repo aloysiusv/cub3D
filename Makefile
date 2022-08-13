@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 21:00:01 by lrandria          #+#    #+#              #
-#    Updated: 2022/08/12 06:49:00 by lrandria         ###   ########.fr        #
+#    Updated: 2022/08/13 16:38:55 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ SRCS		=	0_main.c 							\
 				11_exec_init_screen.c 				\
 				12_exec_init_textures.c 			\
 				13_exec_init_images.c 				\
-				14_exec_hook_exiting.c 				\
 				14_exec_hook_keying.c 				\
 				14_exec_hook_releasing.c 			\
 				15_exec_raycast_raycasting.c 		\

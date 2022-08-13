@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 04:53:39 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 02:25:39 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:38:41 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	get_player(t_game *zz, size_t i, size_t j)
 		zz->depart = 'W';
 	else if (zz->map[i][j] == 'E')
 		zz->depart = 'E';
-	zz->dx = i; 
+	zz->dx = i;
 	zz->dy = j;
 	// been switched for segfault
 	// zz->dx = j; 

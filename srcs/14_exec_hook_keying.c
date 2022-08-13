@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:44:23 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 16:22:40 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:05:41 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	keying(int keycode, t_game *zz)
 	else if (keycode == ROTATE_RIGHT)
 		zz->data.rotate_right = 1;
 	else if (keycode == 65307)
-		exiting("\n", zz);
+		mlx_loop_end(zz->data.mlx_ptr);
 	return (1);
 }

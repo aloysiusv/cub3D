@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 18:02:53 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 06:29:22 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:05:04 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define ERROR_FILE_FORMAT		"invalid file format or extension\n"
 # define ERROR_FILE_CRASH		"file: unexpected crash\n"
 # define ERROR_FILE_OPEN		"file: can't open file\n"
+# define ERROR_FILE_DIR			"file: is a directory\n"
 # define ERROR_FILE_EMPTY		"file: is empty\n"
 # define ERROR_FILE_ASCII		"file: has non-ascii characters\n"
 # define ERROR_FILE_SIZE		"file: invalid file size\n"

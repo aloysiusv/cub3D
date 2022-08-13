@@ -6,16 +6,21 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 08:25:59 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 23:33:38 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:27:28 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static void	check_valid_map_size(t_game *zz)
+static void	init_xylines(t_game *zz)
 {
-	if (get_tab_size(zz->map) < 3)
+	size_t	map_size;
+
+	map_size = get_tab_size(zz->map);
+	if (map_size < 3)
 		oops_crash(zz, ERROR_MAP_SIZE);
+	zz->xlines = get_max_len(zz->map);
+	zz->ylines = map_size;
 }
 
 static size_t	skip_blank_lines(char **my_file, size_t	i)
@@ -52,5 +57,5 @@ void	get_map(t_game *zz, size_t i)
 	if (!zz->map)
 		oops_crash(zz, ERROR_DATA_MISSING);
 	zz->map[j] = NULL;
-	check_valid_map_size(zz);
+	init_xylines(zz);
 }

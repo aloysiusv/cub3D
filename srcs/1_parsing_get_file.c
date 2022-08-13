@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 04:01:10 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/12 23:30:33 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:04:27 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	get_file(t_game *zz)
 	char	buffer[10000 + 1];
 
 	buffer[0] = 0;
+	fd = open(zz->map_name, __O_DIRECTORY);
+	if (fd != -1)
+		clean_error_exit(zz, NULL, fd, ERROR_FILE_DIR);
 	fd = open(zz->map_name, O_RDONLY);
 	if (fd == -1)
 		clean_error_exit(zz, NULL, fd, ERROR_FILE_OPEN);

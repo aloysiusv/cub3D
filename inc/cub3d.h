@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by ebourdit          #+#    #+#             */
-/*   Updated: 2022/08/13 02:44:03 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:39:01 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void		launch_game(t_game *zz);
 // ========================================================================= //
 
 /* exec_hook */
-int			exiting(char *str, t_game *zz);
+// int			exiting(char *str, t_game *zz);
 int			keying(int keycode, t_game *zz);
 int			releasing(int keycode, t_game *zz);
 

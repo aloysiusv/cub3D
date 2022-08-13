@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:49:18 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 01:16:46 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:40:24 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ void	incrementing(t_game *zz)
 			zz->ray.mapy += zz->ray.stepy;
 			zz->ray.side = 1;
 		}
-		// printf("[zz->ray.mapx][zz->ray.mapy] = [%d][%d]\n", zz->ray.mapx, zz->ray.mapy);
-		// printf("segfaulty line is [%s]\n", zz->map[zz->ray.mapx]);
-		// printf("segfaulty char is [%c]\n", zz->map[zz->ray.mapx][zz->ray.mapy]);
 		if (zz->map[zz->ray.mapx][zz->ray.mapy] == '1')
 			zz->ray.hit = 1;
 	}
