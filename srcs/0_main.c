@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 21:24:20 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 19:03:33 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 21:05:49 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	init(char **argv, t_game *zz)
 	zz->my_file = NULL;
 	zz->ground_color = -1;
 	zz->sky_color = -1;
-	zz->rx = 2048;
+	zz->rx = 2575;
 	zz->ry = 2048;
 }
 
@@ -46,9 +46,6 @@ static void	parsing(char **argv, t_game *zz)
 	get_file(zz);
 	check_info(zz);
 	check_map(zz);
-	// printf("====================================\n");
-	// printing_parsing(zz);
-	// printf("====================================\n");
 }
 
 int	main(int argc, char **argv)

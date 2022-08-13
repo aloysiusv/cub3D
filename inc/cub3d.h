@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by ebourdit          #+#    #+#             */
-/*   Updated: 2022/08/13 16:39:01 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 21:52:30 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 //                                Structures                                 //
 // ========================================================================= //
 
-typedef struct		s_texture
+typedef struct s_texture
 {
 	int				texdir;
 	double			wallx;
@@ -56,7 +56,7 @@ typedef struct		s_texture
 	double			texpos;
 }					t_texture;
 
-typedef struct		s_ray
+typedef struct s_ray
 {
 	double			posx;
 	double			posy;
@@ -87,12 +87,14 @@ typedef struct		s_ray
 	int				texture;
 }					t_ray;
 
-typedef struct		s_data
+typedef struct s_data
 {
 	void			*mlx_ptr;
 	void			*mlx_win;
-	void			*img;
+	t_img			*img;
+	t_img			*img2;
 	int				*addr;
+	int				*addr2;
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
@@ -104,22 +106,20 @@ typedef struct		s_data
 	int				rotate_right;
 	int				width;
 	int				height;
-	void			*img2;
-	int				*addr2;
 }					t_data;
 
-typedef struct		s_game
+typedef struct s_game
 {
 	char			*map_name;
-	char 			**my_file;
+	char			**my_file;
 	char			**map;
 	char			*no;
 	char			*so;
 	char			*we;
 	char			*ea;
-	int 			ground_color;
-	int 		 	sky_color;
-	int 			rgb[3];
+	int				ground_color;
+	int				sky_color;
+	int				rgb[3];
 	int				rx;
 	int				ry;
 	size_t			ylines;

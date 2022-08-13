@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:49:04 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 17:42:37 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 22:08:33 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	init_ray(t_game *zz)
 	zz->ray.raydiry = zz->ray.diry + zz->ray.plany * zz->ray.camerax;
 	zz->ray.mapx = (int)zz->ray.posx;
 	zz->ray.mapy = (int)zz->ray.posy;
-	zz->ray.movespeed = 0.8;
-	zz->ray.rotspeed = 0.033 * 1.8;	
+	zz->ray.movespeed = 0.15;
+	zz->ray.rotspeed = 0.09;
 }
 
 void	init_deltadist(t_game *zz)
@@ -33,16 +33,16 @@ void	init_deltadist(t_game *zz)
 		zz->ray.deltadistx = 1;
 	else
 		zz->ray.deltadistx = sqrt(1 + (zz->ray.raydiry
-			* zz->ray.raydiry) / (zz->ray.raydirx
-			* zz->ray.raydirx));
+					* zz->ray.raydiry) / (zz->ray.raydirx
+					* zz->ray.raydirx));
 	if (zz->ray.raydirx == 0)
-		zz->ray.deltadisty = 0; 
+		zz->ray.deltadisty = 0;
 	else if (zz->ray.raydiry == 0)
 		zz->ray.deltadisty = 1;
 	else
 		zz->ray.deltadisty = sqrt(1 + (zz->ray.raydirx
-			* zz->ray.raydirx) / (zz->ray.raydiry
-			* zz->ray.raydiry));	
+					* zz->ray.raydirx) / (zz->ray.raydiry
+					* zz->ray.raydiry));
 }
 
 void	init_sidedist(t_game *zz)
@@ -55,8 +55,8 @@ void	init_sidedist(t_game *zz)
 	else
 	{
 		zz->ray.stepx = 1;
-		zz->ray.sidedistx =
-			(zz->ray.mapx + 1.0 - zz->ray.posx) * zz->ray.deltadistx;
+		zz->ray.sidedistx
+			= (zz->ray.mapx + 1.0 - zz->ray.posx) * zz->ray.deltadistx;
 	}
 	if (zz->ray.raydiry < 0)
 	{
@@ -66,7 +66,7 @@ void	init_sidedist(t_game *zz)
 	else
 	{
 		zz->ray.stepy = 1;
-		zz->ray.sidedisty =
-			(zz->ray.mapy + 1.0 - zz->ray.posy) * zz->ray.deltadisty;
+		zz->ray.sidedisty
+			= (zz->ray.mapy + 1.0 - zz->ray.posy) * zz->ray.deltadisty;
 	}
 }

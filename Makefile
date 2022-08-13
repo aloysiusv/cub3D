@@ -6,7 +6,7 @@
 #    By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 21:00:01 by lrandria          #+#    #+#              #
-#    Updated: 2022/08/13 16:38:55 by lrandria         ###   ########.fr        #
+#    Updated: 2022/08/13 22:01:16 by lrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,6 @@ SRCS		=	0_main.c 							\
 				utils_str.c 						\
 				utils_tab.c 						\
 				utils_whitespaces.c					\
-				printing.c		 					\
 
 OBJS		:=	$(addprefix ./objs/,$(SRCS:%.c=%.o))
 DEP			=	$(addprefix ./objs/,$(OBJS:%.o=%.d))

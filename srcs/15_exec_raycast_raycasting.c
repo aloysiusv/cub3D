@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_raycast_raycasting.c                          :+:      :+:    :+:   */
+/*   15_exec_raycast_raycasting.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:49:24 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/11 08:07:04 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 22:11:38 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	change_frame(t_game *zz)
 {
-	void *tmp;
+	void	*tmp;
 
 	tmp = zz->data.img;
 	zz->data.img = zz->data.img2;
@@ -33,7 +33,7 @@ static void	sending_ray(t_game *zz)
 	calculating(zz);
 }
 
-int		raycasting(t_game *zz)
+int	raycasting(t_game *zz)
 {
 	zz->ray.x = 0;
 	while (zz->ray.x < zz->rx)
@@ -43,7 +43,7 @@ int		raycasting(t_game *zz)
 		zz->ray.x++;
 	}
 	mlx_put_image_to_window(zz->data.mlx_ptr, zz->data.mlx_win,
-			zz->data.img, 0, 0);
+		zz->data.img, 0, 0);
 	moving_front_back(zz);
 	moving_left_right(zz);
 	rotating_left_right(zz);

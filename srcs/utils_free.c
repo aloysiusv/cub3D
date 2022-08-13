@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:07:12 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 03:10:18 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 21:03:16 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	free_all(t_game *zz)
 	free_tab(zz->my_file);
 	if (zz->data.img)
 		mlx_destroy_image(zz->data.mlx_ptr, zz->data.img);
+	if (zz->data.img2)
+		mlx_destroy_image(zz->data.mlx_ptr, zz->data.img2);
 	if (zz->texture[0].img)
 		mlx_destroy_image(zz->data.mlx_ptr, zz->texture[0].img);
 	if (zz->texture[1].img)
@@ -41,6 +43,11 @@ void	free_all(t_game *zz)
 		mlx_destroy_image(zz->data.mlx_ptr, zz->texture[3].img);
 	if (zz->data.mlx_win)
 		mlx_destroy_window(zz->data.mlx_ptr, zz->data.mlx_win);
+	if (zz->data.mlx_ptr != NULL)
+	{
+		mlx_destroy_display(zz->data.mlx_ptr);
+		free(zz->data.mlx_ptr);
+	}
 }
 
 void	good_exit(t_game *zz, char *str)

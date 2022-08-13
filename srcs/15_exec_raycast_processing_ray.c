@@ -6,7 +6,7 @@
 /*   By: lrandria <lrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 07:49:18 by lrandria          #+#    #+#             */
-/*   Updated: 2022/08/13 17:40:24 by lrandria         ###   ########.fr       */
+/*   Updated: 2022/08/13 22:00:59 by lrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,11 @@ void	incrementing(t_game *zz)
 void	calculating(t_game *zz)
 {
 	if (zz->ray.side == 0)
-		zz->ray.perpwalldist =
-		((double)zz->ray.mapx - zz->ray.posx + (1 - (double)zz->ray.
-		stepx) / 2) / zz->ray.raydirx;
+		zz->ray.perpwalldist = ((double)zz->ray.mapx - zz->ray.posx
+				+ (1 - (double)zz->ray.stepx) / 2) / zz->ray.raydirx;
 	else
-		zz->ray.perpwalldist = ((double)zz->ray.mapy - zz->ray.
-		posy + (1 - (double)zz->ray.stepy) / 2) / zz->ray.raydiry;
+		zz->ray.perpwalldist = ((double)zz->ray.mapy - zz->ray.posy
+				+ (1 - (double)zz->ray.stepy) / 2) / zz->ray.raydiry;
 	zz->ray.lineheight = (int)(zz->ry / zz->ray.perpwalldist);
 	zz->ray.drawstart = -zz->ray.lineheight / 2 + zz->ry / 2;
 	if (zz->ray.drawstart < 0)
